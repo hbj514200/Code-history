@@ -1,0 +1,12 @@
+#include<stdio.h>
+char *c[15]={"0","Table-water","Table-water","Table-water","Coca-Cola","Milk","Beer","Orange-Juice","Sprite","Oolong-Tea","Green-Tea"};
+int   z[15]={0,1,1,1,2,2,3,3,3,4,4};
+
+int main(void){
+int sum=0, i, tem, mai[15]={0};
+while(scanf("%d", &i)!=EOF&&i!=-1) sum+=i;   tem=sum;
+while(scanf("%d", &i)!=EOF&&i!=-1&&i<=10&&i>=1) {  if(sum<z[i]) break;     mai[i]++; sum-=z[i];  }
+printf("Total: %d    Change: %d\n", tem, sum); 
+for(i=1; i<=10; i++)  if(mai[i] )  printf("%s:%d  ", c[i], mai[i]);   putchar('\n');
+return 0;
+}

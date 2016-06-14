@@ -1,0 +1,29 @@
+#include<stdio.h>
+#include<stdlib.h>
+int n, i, tem, z[1005]={0,0};
+
+void toubi(int d){
+if(d!=1)   {  printf("ÄáÂêÍ¶Ò»¸öÓ²±Ò°¡£¡\n");  return; }
+do {   tem=rand()%10000; }  while(tem>=10000||tem<1000);
+for(i=1; i<=n; i++)  if(z[i]==0) {  printf("¼Ä´æÏä±àºÅ: %d   ÃÜÂë: %d\n", i, tem);   z[i]=tem; break; }
+if(i>n)  printf("±¾¹ñÒÑÂú\n");
+return;
+}
+
+void mima(int m){
+for(i=1; i<=n; i++)   if(z[i]==m&&m!=0)  {  printf("%dºÅ¼Ä´æÏäÒÑ´ò¿ª\n", i);  z[i]=0;  return;  }
+printf("ÃÜÂë´íÎó\n");    return;
+}
+
+int main(void){
+int choice, d;
+printf("¼Ä´æÏä×ÜÊı:");  scanf("%d", &n);
+while(1){
+printf("1. Í¶Ó²±Ò	  2.ÊäÃÜÂë   0.ÍË³ö  ÇëÑ¡Ôñ:");     scanf("%d", &choice);
+     if(choice==1) {  printf("Í¶±ÒÖµ: ");   scanf("%d", &d);   toubi(d);  }
+else if(choice==2) {  printf("ÊäÈëÃÜÂë: ");  scanf("%d", &d);  mima(d);   }
+else if(choice==0)    break;
+}
+printf("Ğ»Ğ»Ê¹ÓÃ£¡\n");
+return 0;
+}

@@ -1,0 +1,9 @@
+#include<stdio.h>
+
+int main(void){
+int n;   FILE *fp=fopen("c:\\1.txt","w");
+while(scanf("%d", &n)!=EOF&&n!=-1)
+fprintf(fp, "%d ", n);
+fclose(fp);
+return 0;
+}
