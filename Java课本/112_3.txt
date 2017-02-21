@@ -1,0 +1,19 @@
+class TwoPoint {
+    int x;
+    int y;
+    public TwoPoint(int x, int y){
+        this.x = x;
+        this.y = y;
+    }
+    public double getLong(){
+        return Math.sqrt( x*x+y*y );
+    }
+}
+
+public class Main {
+
+    public static void main(String args[]){
+        System.out.print( new TwoPoint(3,4).getLong() );
+    }
+
+}

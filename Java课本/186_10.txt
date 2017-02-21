@@ -1,0 +1,21 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String args[]){
+        int[] z = new int[5];
+        Scanner input = new Scanner(System.in);
+        for(int i=0; i<5; i++)  z[i] = input.nextInt();
+
+        int max = 0, min = 0, tem;
+        for(int i=0; i<5; i++)      if(z[i]>z[max])    max = i;
+        tem=z[max];     z[max] = z[0];      z[0] = tem;
+
+        for(int i=0; i<5; i++)      if(z[i]<z[min])    min = i;
+        tem=z[min];     z[min] = z[4];      z[4] = tem;
+        
+        System.out.print(Arrays.toString(z));
+    }
+
+}

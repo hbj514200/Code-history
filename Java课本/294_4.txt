@@ -1,0 +1,42 @@
+class NoSanjiaoException extends Exception {
+    String mssage;
+    public NoSanjiaoException(String mssage) {
+        this.mssage = mssage;
+    }
+    public String getMssage() {
+        return mssage;
+    }
+}
+
+class Sanj {
+    double x, y, z;
+
+    public Sanj(double x, double y, double z) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
+    public double getArea() throws NoSanjiaoException{
+        if(x+y<=z || x+z<=y || y+z<=x)  throw new NoSanjiaoException("三边无法构成三角形");
+        double p = (x+y+z)/2;
+        return Math.sqrt( p*(p-x)*(p-y)*(p-z) );
+    }
+    public void showInfo() throws NoSanjiaoException{
+        if(x+y<=z || x+z<=y || y+z<=x)  throw new NoSanjiaoException("三边无法构成三角形");
+        System.out.println(x + "  " + y + "  " + z);
+    }
+}
+
+public class Main {
+
+    public static void main(String args[]) {
+        Sanj san = new Sanj(3,4,12);
+        try {
+            san.showInfo();
+        } catch (NoSanjiaoException e) {
+            e.printStackTrace();
+            System.out.print(e.getMssage());
+        }
+    }
+
+}

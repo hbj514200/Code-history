@@ -1,0 +1,23 @@
+class Clock {
+    private int shi;
+    private int fen;
+    private int miao;
+    public Clock(int shi, int fen, int miao) {
+        this.shi = shi;
+        this.fen = fen;
+        this.miao = miao;
+    }
+    public void show(){
+        System.out.println(shi + "  " +fen + "  " + miao);
+    }
+}
+
+public class Main {
+
+    public static void main(String args[]){
+        new Clock(5,4,3).show();
+        new Clock(10,6,2).show();
+        new Clock(8,1,6).show();
+    }
+
+}

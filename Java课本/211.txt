@@ -1,0 +1,31 @@
+import java.util.ArrayList;
+import java.util.List;
+
+class Man {
+    String name;
+    int age;
+    int money;
+    public Man(String name, int age, int money){
+        this.name = name;
+        this.age = age;
+        this.money = money;
+    }
+    public String toString() {  return name + "  " + age + "  " + money;  }
+    public void work()       {  System.out.println(name+" working");      }
+}
+
+public class Main {
+
+    public static void main(String[] args){
+        List<Man> list = new ArrayList<>();
+        list.add( new Man("zhang3", 18, 3000) );
+        list.add( new Man("li4", 25, 3500) );
+        list.add( new Man("wang5", 22, 3200) );
+
+        //list.add( 1, new Man("zhao6", 24, 3300) );
+        //list.remove(2);
+        //for(Man man:list)   System.out.println(man.toString());
+        //for(Man man:list)     man.work();
+    }
+
+}

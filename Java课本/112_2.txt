@@ -1,0 +1,19 @@
+class ChangFang {
+    int chang;
+    int kuan;
+    public ChangFang(int chang, int kuan){
+        this.chang = chang;
+        this.kuan = kuan;
+    }
+    public int getAre(){
+        return chang*kuan;
+    }
+}
+
+public class Main {
+
+    public static void main(String args[]){
+        System.out.print( new ChangFang(4,5).getAre() );
+    }
+
+}

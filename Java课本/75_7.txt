@@ -1,0 +1,14 @@
+
+public class Main {
+
+    public static void main(String[] args){
+        for(int n=1; n<=1000; n++){
+            int tem = n;
+            int ge  = (int) Math.pow(tem%10,3);   tem/=10;
+            int shi = (int) Math.pow(tem%10,3);   tem/=10;
+            int bai = (int) Math.pow(tem%10,3);   tem/=10;
+            if (ge+shi+bai==n)    System.out.println(n);
+        }
+    }
+
+}

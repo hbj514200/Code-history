@@ -1,0 +1,13 @@
+
+public class Main {
+    private static int xinqi = 2;
+
+    public static void main(String[] args){
+        for(int i=1; i<=100; i++){
+            if (xinqi<7)    xinqi++;
+            else            xinqi = 1;
+        }
+        System.out.println("The result is " + xinqi);
+    }
+
+}

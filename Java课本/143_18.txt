@@ -1,0 +1,35 @@
+class Car {
+    final String paizi = "BMW";
+    public void drive(){
+        System.out.println(paizi + " driving");
+    }
+}
+
+class Aodi extends Car {
+    final String paizi = "Aodi";
+    int price = 300000;
+    String xinhao = "A4L";
+    public void bainsu(){
+        System.out.println(paizi + " bainsu");
+    }
+}
+
+class Benchi extends Car {
+    final String paizi = "Benchi";
+    int price = 300000;
+    String xinhao = "S320";
+    public void bainsu(){
+        System.out.println(paizi + " bainsu");
+    }
+}
+
+public class Main {
+
+    public static void main(String args[]){
+        Aodi aodi = new Aodi();
+        Benchi benchi = new Benchi();
+        aodi.drive();        benchi.drive();
+        aodi.bainsu();       benchi.bainsu();
+    }
+
+}

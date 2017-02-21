@@ -1,0 +1,13 @@
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args){
+        Scanner input = new Scanner(System.in);
+        System.out.println("input R");        double r = input.nextDouble();
+        System.out.println("input H");        double h = input.nextDouble();
+        System.out.println("The V is " + r*r*3.1415*h);
+        System.out.println("The size is " + r*r*3.1415);
+    }
+
+}

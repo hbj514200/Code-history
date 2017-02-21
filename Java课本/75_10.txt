@@ -1,0 +1,24 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main {
+    static int[] tian = {0,31,28,31,30,31,30,31, 31,30,31,30,31};
+
+    public static void main(String[] args){
+        Scanner input = new Scanner(System.in);
+        System.out.println("请输入年：");    int year = input.nextInt();
+        System.out.println("请输入月：");    int month = input.nextInt();
+        System.out.println("请输入日：");    int day = input.nextInt();
+
+        int result = 0;
+        int[] tian2 = Arrays.copyOf(tian,13);   if (run(year))  tian2[2] = 29;
+        for(int i=1; i<month; i++)              result += tian2[i];
+        result += day;
+        System.out.println("它是该年的第 " + result + "天");
+    }
+
+    private static boolean run(int year) {
+        return year % 100 != 0 && year % 4 == 0 || year % 100 == 0 && year % 400 == 0;
+    }
+
+}

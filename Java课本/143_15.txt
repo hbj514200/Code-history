@@ -1,0 +1,16 @@
+class ChongZai {
+    public void print(int n)    {   System.out.println("int: " + n);     }
+    public void print(double n) {   System.out.println("double: " + n);    }
+    public void print(String n) {   System.out.println("String: " + n);    }
+}
+
+public class Main {
+
+    public static void main(String[] args){
+        ChongZai chongZai = new ChongZai();
+        int a = 5;              chongZai.print(a);
+        double b = 6;           chongZai.print(b);
+        String st = "hehe";     chongZai.print(st);
+    }
+
+}

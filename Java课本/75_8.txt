@@ -1,0 +1,12 @@
+
+public class Main {
+
+    public static void main(String[] args){
+        for(int n=101; n<=200; n++){
+            for(int j=2; j<=n; j++)
+            if (j==n)  System.out.println(n);
+            else if (n%j==0)     break;
+        }
+    }
+
+}

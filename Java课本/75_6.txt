@@ -1,0 +1,16 @@
+
+public class Main {
+
+    public static void main(String[] args){
+        double e = 1;
+        for(int n=1; n<=10; n++)     e += 1/getjie(n);
+        System.out.println("½á¹ûe£º" + e);
+    }
+
+    private static double getjie(int n){
+        int result = 1;
+        for(int i=1; i<=n; i++)     result *= i;
+        return result;
+    }
+
+}

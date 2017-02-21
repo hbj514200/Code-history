@@ -1,0 +1,20 @@
+class Print {
+    public void output(){
+        for(int n=100; n<=999; n++){
+            int tem = n;
+            int ge  = (int) Math.pow(tem%10,3);   tem/=10;
+            int shi = (int) Math.pow(tem%10,3);   tem/=10;
+            int bai = (int) Math.pow(tem%10,3);   tem/=10;
+            if (ge+shi+bai==n)    System.out.println(n);
+        }
+    }
+}
+
+
+public class Main {
+
+    public static void main(String[] args){
+        new Print().output();
+    }
+
+}

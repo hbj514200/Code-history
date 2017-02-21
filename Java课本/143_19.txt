@@ -1,0 +1,94 @@
+import java.util.ArrayList;
+
+interface Student {
+    void setName(String name);
+    void setNum(int num);
+    void show();
+    boolean isYouxiu();
+}
+
+class StudentG implements Student {
+    String name;
+    int num;
+    int chenji;
+    boolean cet4;
+
+    public StudentG(String name, int num, int chenji, boolean cet4) {
+        this.name = name;
+        this.num = num;
+        this.chenji = chenji;
+        this.cet4 = cet4;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public void setNum(int num) {
+        this.num = num;
+    }
+
+    @Override
+    public void show() {
+        System.out.println(name + "  " + num + "  " + chenji + "  " + cet4 + "  " + isYouxiu());
+    }
+
+    @Override
+    public boolean isYouxiu() {
+        return cet4 && chenji > 85;
+    }
+}
+
+class StudentM implements Student {
+    String name;
+    int num;
+    int lunwen;
+    boolean cet6;
+
+    public StudentM(String name, int num, int lunwen, boolean cet6) {
+        this.name = name;
+        this.num = num;
+        this.lunwen = lunwen;
+        this.cet6 = cet6;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public void setNum(int num) {
+        this.num = num;
+    }
+
+    @Override
+    public void show() {
+        System.out.println(name + "  " + num + "  " + lunwen + "  " + cet6 + "  " + isYouxiu());
+    }
+
+    @Override
+    public boolean isYouxiu() {
+        return lunwen>1 && cet6;
+    }
+}
+
+public class Main {
+
+    public static void main(String args[]){
+        ArrayList<Student> list = new ArrayList<Student>();
+
+        list.add(new StudentG("zhang3",2014, 90, true) );
+        list.add(new StudentG("li4",2015, 30, false) );
+        list.add(new StudentG("wang5",2016, 40, false) );
+        list.add(new StudentM("zhao6",2017, 0, false) );
+        list.add(new StudentM("lin7",2018, 5, true) );
+
+        for(Student man:list)   System.out.println(man.isYouxiu());
+        System.out.println("----------------------------");
+        for(Student man:list)   man.show();
+    }
+
+}

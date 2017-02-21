@@ -1,0 +1,21 @@
+import java.util.Random;
+
+class A {
+    int check(int data2){
+        int data = 100;
+        if(data2<data)   return 1;
+        if(data2==data)  return 2;
+        if(data2>data)   return 3;
+        return 0;
+    }
+}
+
+public class Main {
+
+    public static void main(String args[]){
+        A a = new A();
+        Random random = new Random();
+        for(int i=1; i<=500; i++)   System.out.print(a.check(random.nextInt()));
+    }
+
+}

@@ -1,0 +1,17 @@
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args){
+        Scanner input = new Scanner(System.in);
+        int n = input.nextInt();
+        int ge  =  n%10;     n/=10;
+        int shi =  n%10;     n/=10;
+        int bai =  n%10;     n/=10;
+        int qian=  n%10;     n/=10;
+        int wan =  n%10;     n/=10;
+        if (wan==ge && qian==shi)   System.out.print("是的");
+        else                        System.out.print("不是");
+    }
+
+}

@@ -1,0 +1,18 @@
+import java.util.Scanner;
+
+public class Main {
+    static int[][] a = { {3,2,6}, {6,8,2,10}, {5}, {12,3,23} };
+
+    public static void main(String[] args){
+        int max = Integer.MIN_VALUE;
+        int min = Integer.MAX_VALUE;
+        for(int[] arr : a){
+            for (int number : arr){
+                if (number<min)     min = number;
+                if (number>max)     max = number;
+            }
+        }
+        System.out.print("最大的是" + max + "   最小的是" + min);
+    }
+
+}

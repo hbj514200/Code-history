@@ -1,0 +1,27 @@
+class A {
+    int dataA = 1;
+    public void print(){
+        System.out.print(A);
+    }
+}
+class B extends A{
+    int dataB = 2;
+    int dataA = 3;
+    public void print(){
+        System.out.print(A);
+    }
+    public void printB(){
+        System.out.print(print B);
+    }
+}
+
+public class Main {
+
+    public static void main(String args[]){
+        A a = new B();
+        a.print();
+        System.out.println(a.dataA);
+        System.out.println(a.dataB);
+    }
+
+}

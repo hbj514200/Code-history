@@ -1,0 +1,31 @@
+class IllegalArgumentException extends Exception {
+    String mssage;
+    public IllegalArgumentException(String mssage) {
+        this.mssage = mssage;
+    }
+
+    public String getMssage() {
+        return mssage;
+    }
+}
+
+public class Main {
+
+    public static void main(String args[]){
+        try {
+            sanjiao(3,4,10);
+        } catch (IllegalArgumentException e){
+            e.printStackTrace();
+            System.out.println(e.getMssage());
+        } catch (Exception e){
+            System.out.println("捕获到了Exception…………");
+        }
+    }
+
+    static void sanjiao(int a, int b, int c) throws Exception {
+        if(a+b<=c)  throw new IllegalArgumentException("三边无法构成三角形");
+        if(a+c<=b)  throw new IllegalArgumentException("三边无法构成三角形");
+        if(b+c<=a)  throw new IllegalArgumentException("三边无法构成三角形");
+    }
+
+}
