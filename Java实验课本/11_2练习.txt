@@ -1,0 +1,18 @@
+package com.example;
+
+import javax.swing.JOptionPane;
+
+public class Main {
+    public static void main(String args[]) {
+        while (true) {
+            String str = JOptionPane.showInputDialog(null, "请输入一个字符串", "");
+            if (str.length() > 10)
+                JOptionPane.showMessageDialog(null, "最长十个字符!", "注意", JOptionPane.WARNING_MESSAGE);
+            else {
+                System.out.println("您输入的字符串长度为: " + str.length());
+                break;
+            }
+        }
+    }
+
+}

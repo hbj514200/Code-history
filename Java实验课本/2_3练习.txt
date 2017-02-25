@@ -1,0 +1,17 @@
+import java.util.Arrays;
+
+public class Main {
+
+    public static void main(String args[]) {
+        int[] a = {8,3,6,7,9,6,3,2,5,4,1,7,1,4,5};      System.out.println(Arrays.toString(a));
+        int[] b = {2,5,6,3,6,4,7,8,2,8,2,6,5,4,1};      System.out.println(Arrays.toString(b));
+        int[] c = new int[a.length];
+
+        for(int i=a.length-1; i>=0; i--){
+            if(a[i]>=b[i])          c[i] = a[i]-b[i];
+            else if(a[i]<b[i])   {  c[i] = a[i]+10-b[i];    c[i-1]--;   }
+        }
+        System.out.println(Arrays.toString(c));
+    }
+
+}

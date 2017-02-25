@@ -1,0 +1,40 @@
+package com.example;
+
+import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
+
+import java.util.*;
+
+public class Main {
+    public static void main(String args[]) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("请输入借款金额: ");
+        double money = scanner.nextDouble();
+        System.out.println("请输入天利息(千分之): ");
+        double lilv = scanner.nextDouble()*0.001;
+        System.out.println("输入第一个年，月，日, 时, 分, 秒数据");
+        System.out.print("输入年份");
+        short yearOne = scanner.nextShort();
+        System.out.print("输入月份");
+        byte monthOne = scanner.nextByte();
+        System.out.print("输入日期");
+        byte dayOne = scanner.nextByte();
+        System.out.println("输入第二个年，月，日数据");
+        System.out.print("输入年份");
+        short yearTwo = scanner.nextShort();
+        System.out.print("输入月份");
+        byte monthTwo = scanner.nextByte();
+        System.out.print("输入日期");
+        byte dayTwo = scanner.nextByte();
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(yearOne, monthOne, dayOne);
+        long timeOne = calendar.getTimeInMillis();
+
+        calendar.set(yearTwo, monthTwo, dayTwo);
+        long timeTwo = calendar.getTimeInMillis();
+
+        long days = (timeOne-timeTwo) / (24 * 60 * 60 * 1000);
+        System.out.println(yearOne + "年" + monthOne + "月" + dayOne + "日和" + yearTwo + "年" + monthTwo + "月" + dayTwo + "相隔" + Math.abs(days) + "天");
+        System.out.printf("应收本息共计 %.2f 元", Math.abs(days)*lilv*money+money);
+    }
+}

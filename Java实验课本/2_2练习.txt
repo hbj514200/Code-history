@@ -1,0 +1,14 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String args[]) {
+        double width = 0;
+        double hight = 0;
+        double area = 0;
+        System.out.print("请输入宽 高: ");
+        Scanner input = new Scanner(System.in);
+        width = input.nextDouble();     hight = input.nextDouble();
+        System.out.println(" 长"+width+" 高"+hight+"  面积"+hight*width);
+    }
+
+}

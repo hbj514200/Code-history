@@ -1,0 +1,58 @@
+package com.example;
+
+abstract class WriteApp {
+    abstract public void xue();
+    abstract public void bianyi();
+    abstract public void yunxin();
+    public void work(){
+        xue();
+        bianyi();
+        yunxin();
+    }
+}
+
+class AnMo extends WriteApp {
+
+    @Override
+    public void xue() {
+        System.out.println("°´Ä¦Æ÷ ±àÐ´");
+    }
+
+    @Override
+    public void bianyi() {
+        System.out.println("°´Ä¦Æ÷ ±àÒë");
+    }
+
+    @Override
+    public void yunxin() {
+        System.out.println("°´Ä¦Æ÷ ÔËÐÐ");
+    }
+}
+
+class NianFo extends WriteApp {
+
+    @Override
+    public void xue() {
+        System.out.println("Äî·ð»ú ±àÐ´");
+    }
+
+    @Override
+    public void bianyi() {
+        System.out.println("Äî·ð»ú ±àÒë");
+    }
+
+    @Override
+    public void yunxin() {
+        System.out.println("Äî·ð»ú ÔËÐÐ");
+    }
+}
+
+public class Main {
+    public static void main(String[] args){
+        AnMo anMo = new AnMo();
+        anMo.work();
+        NianFo nianFo = new NianFo();
+        nianFo.work();
+    }
+}
+

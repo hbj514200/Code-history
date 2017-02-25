@@ -1,0 +1,14 @@
+package com.example;
+
+import java.math.BigInteger;
+
+class Main {
+    public static void main(String args[]) {
+        BigInteger sum = BigInteger.ZERO, up = BigInteger.ONE;
+        for(long i=1; i<=99999999; i++){
+            sum = sum.add(up);
+            up = up.add(BigInteger.ONE);
+        }
+        System.out.println(sum.toString());
+    }
+}

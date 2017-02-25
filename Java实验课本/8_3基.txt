@@ -1,0 +1,51 @@
+package com.example;
+
+abstract class EditFile {  //抽象模板
+    public abstract void choiceEditTool();
+    public abstract void inputContent();
+    public abstract void saveFile();
+
+    public final void editStep() {  //模板方法
+        choiceEditTool();
+        inputContent();
+        saveFile();
+    }
+}
+
+class JavaFile extends EditFile {
+    public void choiceEditTool() {
+        System.out.println("用文本编辑器编写 Java 源文件.");
+    }
+
+    public void inputContent() {
+        System.out.println("输入的内容是:");
+        System.out.println("class E { \n}");
+    }
+
+    public void saveFile() {
+        System.out.println("文件的名字是某个类的名字,扩展名是 java.");
+    }
+}
+
+class WordFile extends EditFile {
+    public void choiceEditTool() {
+        System.out.println("用 Microsoft Word 编写 Word 文件.");
+    }
+
+    public void inputContent() {
+        System.out.println("输入的内容是:简历内容.");
+    }
+
+    public void saveFile() {
+        System.out.println("文件的名字是 resume,扩展名是 word.");
+    }
+}
+
+public class Main {                                            //使用模板方法模式给出的类
+    public static void main(String args[]) {
+        EditFile edit = new JavaFile();
+        edit.editStep();
+        edit = new WordFile();
+        edit.editStep();
+    }
+}

@@ -1,0 +1,70 @@
+package com.example;
+
+/**
+ * 这是 状态模式 的一个例子，用于和基本题目中的 策略模式 进行比对。
+ */
+
+interface WaterSate {
+    void setWenDu(int wendu, Water water);
+    void show();
+}
+interface Water {
+    void setSate(WaterSate state);
+}
+
+class MyWater implements Water {
+    private WaterSate state;
+    public MyWater(int wendu) {
+        this.state = new wen10();
+        state.setWenDu(30, this);
+    }
+    public void setSate(WaterSate state) {
+        this.state = state;
+    }
+    public void showState(){
+        state.show();
+    }
+}
+
+public class Main {
+    public static void main(String args[]) {
+        MyWater water = new MyWater(30);
+        water.showState();
+    }
+}
+
+class wen10 implements WaterSate {
+    int wendu = 10;
+    public void setWenDu(int wendu, Water water) {
+        if(wendu>this.wendu)    water.setSate(new wen20());
+    }
+    public void show() {    System.out.print(wendu + " 度");   }
+}
+class wen20 implements WaterSate {
+    int wendu = 20;
+    public void setWenDu(int wendu, Water water) {
+        if(wendu>this.wendu)    water.setSate(new wen30());
+    }
+    public void show() {    System.out.print(wendu + " 度");   }
+}
+class wen30 implements WaterSate {
+    int wendu = 30;
+    public void setWenDu(int wendu, Water water) {
+        if(wendu>this.wendu)    water.setSate(new wen40());
+    }
+    public void show() {    System.out.print(wendu + " 度");   }
+}
+class wen40 implements WaterSate {
+    int wendu = 40;
+    public void setWenDu(int wendu, Water water) {
+        if(wendu>this.wendu)    water.setSate(new wen50());
+    }
+    public void show() {    System.out.print(wendu + " 度");   }
+}
+class wen50 implements WaterSate {
+    int wendu = 50;
+    public void setWenDu(int wendu, Water water) {
+        if(wendu>this.wendu)    System.out.println("超过了50度Error!!!!!!!!");
+    }
+    public void show() {    System.out.print(wendu + " 度");   }
+}

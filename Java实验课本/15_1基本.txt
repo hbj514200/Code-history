@@ -1,0 +1,81 @@
+package com.example;
+
+import java.util.Scanner;
+
+class Main {
+    public static void main(String args[]) {
+        System.out.println("输入汉字练习(输入#结束程序)");
+        System.out.printf("输入显示的汉字(回车)\n");
+        Chinese hanzi;
+        hanzi = new Chinese();
+        GiveChineseThread giveHanzi = new GiveChineseThread();
+        InputChineseThread typeHanzi = new InputChineseThread();
+        giveHanzi.setChinese(hanzi);
+        giveHanzi.setSleepLength(6000);
+        typeHanzi.setChinese(hanzi);
+        giveHanzi.start();
+        try {
+            Thread.sleep(200);
+        } catch (Exception exp) { }
+        typeHanzi.start();
+    }
+}
+
+class Chinese {
+    char c = '\0';
+    public void setChinese(char c) {    this.c = c; }
+    public char getChinese()       {  return c;     }
+}
+
+class GiveChineseThread extends Thread {
+    Chinese hanzi;
+    char startChar = (char) 22909, endChar = (char) (startChar + 100);
+    int sleepLength = 5000;
+
+    public void setChinese(Chinese hanzi) {
+        this.hanzi = hanzi;
+    }
+
+    public void setSleepLength(int n) {
+        sleepLength = n;
+    }
+
+    public void run() {
+        char c = startChar;
+        while (true) {
+            hanzi.setChinese(c);
+            System.out.printf("显示的汉字:%c\n ", hanzi.getChinese());
+            try { Thread.sleep(sleepLength); } catch (Exception e) { }
+            c = (char) (c + 1);
+            if (c > endChar) c = startChar;
+        }
+    }
+}
+
+class InputChineseThread extends Thread {
+    Scanner reader;
+    Chinese hanzi;
+    int score = 0;
+
+    InputChineseThread() {
+        reader = new Scanner(System.in);
+    }
+
+    public void setChinese(Chinese hanzi) {
+        this.hanzi = hanzi;
+    }
+
+    public void run() {
+        while (true) {
+            String str = reader.nextLine();
+            char c = str.charAt(0);
+            if (c == hanzi.getChinese()) {
+                score++;
+                System.out.printf("\t\t 输入对了,目前分数%d\n", score);
+            } else {
+                System.out.printf("\t\t 输入错了,目前分数%d\n", score);
+            }
+            if (c == '#') System.exit(0);
+        }
+    }
+}

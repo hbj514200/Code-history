@@ -1,0 +1,19 @@
+package com.example;
+
+import java.math.BigInteger;
+
+class Main {
+    public static void main(String args[]) {
+        System.out.println( getJie(new BigInteger("5")) );
+    }
+
+    private static BigInteger getJie(BigInteger n){
+        BigInteger sum = BigInteger.ONE;
+        BigInteger i = BigInteger.ONE;
+        for(; i.compareTo(n)<=0; i=i.add(BigInteger.ONE)){
+            sum = sum.multiply(i);
+        }
+        return sum;
+    }
+
+}

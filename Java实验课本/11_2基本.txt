@@ -1,0 +1,21 @@
+package com.example;
+
+import javax.swing.JOptionPane;
+
+public class Main {
+    public static void main(String args[]) {
+        double result = 0;
+        boolean inputComplete = false;
+        while (!inputComplete) {
+            try {
+                String str = JOptionPane.showInputDialog(null, "请输入一个正数", "");
+                result = Double.parseDouble(str);
+                if (result >= 0) inputComplete = true;
+            } catch (NumberFormatException exp) {
+                JOptionPane.showMessageDialog(null, "请输入合法数字", "错误", JOptionPane.WARNING_MESSAGE);
+                inputComplete = false;
+            }
+        } double sqrtRoot = Math.sqrt(result);
+        System.out.println(result + "平方根:" + sqrtRoot);
+    }
+}

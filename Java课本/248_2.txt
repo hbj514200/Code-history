@@ -1,0 +1,21 @@
+package com.example;
+
+import java.awt.*;
+import javax.swing.*;
+
+class Frame extends JFrame {
+    Frame() {
+        setLayout(new GridLayout(10,10));
+        for (int i = 0; i <= 99; i++)
+            getContentPane().add(new JButton(Integer.toString(i)));
+        pack();
+        setVisible(true);
+        setSize(500,500);
+    }
+}
+
+public class Main {
+    public static void main(String[] args){
+        new Frame();
+    }
+}

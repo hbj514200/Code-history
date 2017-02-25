@@ -1,0 +1,42 @@
+package com.example;
+
+import java.util.*;
+
+class TV implements Comparable<TV> {         //想不到实现接口可以用泛型
+    int price = 0;
+    String name;
+
+    TV(String n, int p) {
+        name = n;
+        price = p;
+    }
+
+    public int compareTo(TV b) {
+        return (this.price - b.price);
+    }
+}
+
+
+public class Main {
+    public static void main(String args[]) {
+        List<TV> list = new LinkedList<TV>();
+        list.add(new TV("meizu", 208));
+        list.add(new TV("huawei", 218));
+        list.add(new TV("leshi", 228));
+        list.add(new TV("xiaomi", 198));
+        list.add(new TV("sumg", 188));
+        Collections.sort(list);
+
+        Iterator<TV> iter = list.iterator();
+        while (iter.hasNext()) {
+            TV stu = iter.next();
+            System.out.println(stu.name + "价格:" + stu.price);
+        }
+
+        TV zhaoLin = new TV("siran", 208);
+        int index = Collections.binarySearch(list, zhaoLin, null);
+        if (index >= 0) {
+            System.out.println(zhaoLin.name + "和链表中" + list.get(index).name + "价格相同");
+        }
+    }
+}

@@ -1,0 +1,27 @@
+import java.util.Random;
+
+class MulThread extends Thread {
+    private String name;
+    public MulThread(String name) {
+        this.name = name;
+    }
+    @Override
+    public void run() {
+        try { Thread.sleep(new Random().nextInt()%1000); } catch (Exception e) { e.printStackTrace(); }
+        System.out.println( name + "  finished" );
+    }
+}
+
+public class Main {
+
+    public static void main(String args[]) {
+        MulThread t1 = new MulThread("One");
+        MulThread t2 = new MulThread("Two");
+        MulThread t3 = new MulThread("Three");
+
+        t1.start();
+        t2.start();
+        t3.start();
+    }
+
+}

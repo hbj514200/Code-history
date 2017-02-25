@@ -1,0 +1,13 @@
+import java.util.regex.*;
+
+public class Main {
+    public static void main(String args[]) {
+        String str = "清华大学出版社 http://www.tup.com 是著名出版社, 主要出版计算机等方面的图书";
+        Matcher matcher;
+        String regex = "[^(http://||www)\56?\\w+\56{1}\\w+\56{1}\\p{Alpha}]";
+        Pattern pattern = Pattern.compile(regex);
+        matcher = pattern.matcher(str);
+        System.out.printf(matcher.replaceAll(""));
+    }
+
+}
