@@ -1,0 +1,52 @@
+package com.example;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.GridLayout;
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.AdjustmentListener;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollBar;
+
+public class Main extends JFrame implements AdjustmentListener {
+    private JPanel panel = new JPanel();
+    private JScrollBar red = new JScrollBar(JScrollBar.HORIZONTAL, 0, 60, 0, 500);
+    private JScrollBar green = new JScrollBar(JScrollBar.HORIZONTAL, 0, 60, 0, 500);
+    private JScrollBar blue = new JScrollBar(JScrollBar.HORIZONTAL, 0, 60, 0, 500);
+    private int redColor;
+    private int greenColor;
+    private int blueColor;
+
+    public static void main(String[] args){
+        new Main();
+    }
+
+    public Main(){
+        add(panel);
+
+        JPanel xia = new JPanel(new GridLayout(3,1));
+        red.setMaximum(255);    red.setMinimum(0);
+        green.setMaximum(255);  green.setMinimum(0);
+        blue.setMaximum(255);   blue.setMinimum(0);
+        red.addAdjustmentListener(this);    green.addAdjustmentListener(this);      blue.addAdjustmentListener(this);
+        xia.add(red);   xia.add(green);   xia.add(blue);
+        add(xia, BorderLayout.SOUTH);
+
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setSize(480,320);
+        setVisible(true);
+    }
+
+    @Override
+    public void adjustmentValueChanged(AdjustmentEvent event) {
+        System.out.println(event.getValue());
+        if(event.getSource()==red)      redColor = (int) (event.getValue()*1.25);
+        if(event.getSource()==green)    greenColor = (int) (event.getValue()*1.25);
+        if(event.getSource()==blue)     blueColor = (int) (event.getValue()*1.25);
+        panel.setBackground(new Color(redColor,greenColor,blueColor));
+    }
+
+}
+

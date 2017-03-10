@@ -1,0 +1,60 @@
+package com.example;
+
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.ButtonGroup;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
+
+public class Main extends JFrame implements ActionListener {
+    JRadioButton oneButton = new JRadioButton("选项1");
+    JRadioButton twoButton = new JRadioButton("选项2");
+    JRadioButton thrButton = new JRadioButton("选项3");
+
+    public static void main(String[] args){
+        new Main();
+    }
+
+    public Main(){
+        setLayout(new FlowLayout());
+        add(oneButton);
+        add(twoButton);
+        add(thrButton);
+        ButtonGroup group = new ButtonGroup();
+        group.add(oneButton);
+        group.add(twoButton);
+        group.add(thrButton);
+        oneButton.addActionListener(this);
+        twoButton.addActionListener(this);
+        thrButton.addActionListener(this);
+
+        setSize(320,240);
+        setVisible(true);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent event) {
+        switch (event.getActionCommand()){
+            case "选项1" :
+                oneButton.setVisible(false);
+                twoButton.setVisible(true);
+                thrButton.setVisible(true);
+                break;
+            case "选项2" :
+                oneButton.setVisible(true);
+                twoButton.setVisible(false);
+                thrButton.setVisible(true);
+                break;
+            case "选项3" :
+                oneButton.setVisible(true);
+                twoButton.setVisible(true);
+                thrButton.setVisible(false);
+                break;
+        }
+        JOptionPane.showMessageDialog(null,"你选择了 '"+event.getActionCommand()+"'");
+    }
+
+}
+

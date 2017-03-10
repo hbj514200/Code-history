@@ -1,0 +1,23 @@
+package com.example;
+
+import java.io.IOException;
+
+public class ReadSource {
+
+    public static void main(String[] args) {
+        try {
+            char[] data = new char[50];
+            int i = 0;
+            while(true){
+                char ch = (char) System.in.read();
+                if(ch=='\n')    break;
+                data[i++] = ch;
+            }
+            System.out.println(new String(data));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
+

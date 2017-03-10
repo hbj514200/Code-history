@@ -1,0 +1,65 @@
+package com.example;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+public class MySQL {
+    private Statement stat;
+
+    public static void main(String[] args){
+        MySQL shujuku = new MySQL();
+        //shujuku.cao("CREATE TABLE student ( " +
+        //        " Sno char(13) NOT NULL PRIMARY KEY, " +
+        //        " Sname varchar(8) NOT NULL, " +
+        //        " Ssex char(2) NOT NULL, " +
+        //       " Sage int NOT NULL " +
+        //        " )");
+
+        //shujuku.cao("INSERT INTO student VALUES('20150150101','张三','男',18);");
+        //shujuku.cha("SELECT * FROM student WHERE Sno='20150150102'");
+        //shujuku.cao("DELETE FROM `student` WHERE Sno='20150150103'");
+    }
+
+    public MySQL(){
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con;
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/disk", "root", "root");
+            stat = con.createStatement();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public ResultSet cha(String url){
+        try {
+            return stat.executeQuery(url);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public void cao(String url){
+        try {
+            stat.executeUpdate(url);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+}
+
+/**
+ * CREATE TABLE student (
+ Sno char(13) NOT NULL PRIMARY KEY,
+ Sname varchar(8) NOT NULL,
+ Ssex char(2) NOT NULL,
+ Sage int NOT NULL
+ );
+ INSERT INTO student VALUES('20150150101','张三','男',18);
+ SELECT * FROM student WHERE Sno='20150150102';
+ DELETE * FROM student WHERE Sno='20150150103';
+ */

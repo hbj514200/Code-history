@@ -1,0 +1,30 @@
+package com.example;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class ReadSource {
+
+    public static void main(String[] args) {
+        try {
+            char[] data = new char[50];
+            int i = 0;
+            while(true){
+                char ch = (char) System.in.read();
+                if(ch=='\n')    break;
+                data[i++] = ch;
+            }
+
+            File file = new File("D:\\output.txt");
+            FileWriter writer = new FileWriter(file,true);
+            writer.write(data);
+            writer.flush();
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
+

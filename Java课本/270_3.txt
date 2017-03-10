@@ -1,0 +1,49 @@
+package com.example;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class Main extends JFrame implements ActionListener {
+    private JPanel panel;
+    private int index = 1;
+
+    public static void main(String[] args){
+        new Main();
+    }
+
+    public Main(){
+        setLayout(new BorderLayout());
+        panel = new JPanel();
+        add(panel, BorderLayout.CENTER);
+        JButton button = new JButton("¸Ä±äÑÕÉ«");
+        add(button, BorderLayout.SOUTH);
+        button.addActionListener(this);
+        setSize(320,240);
+        setVisible(true);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent actionEvent) {
+        switch (index++%5){
+            case 1 :
+                panel.setBackground(new Color(20,30,80));
+                break;
+            case 2 :
+                panel.setBackground(new Color(80,30,20));
+                break;
+            case 3 :
+                panel.setBackground(new Color(180,200,100));
+                break;
+            case 4 :
+                panel.setBackground(new Color(255,255,150));
+                break;
+        }
+        index=(index+1)%5;
+    }
+
+}
