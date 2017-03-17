@@ -1,0 +1,33 @@
+﻿--第一题
+CREATE DATABASE MyDB1
+on
+primary
+(name='MyDB1_data', filename='D:\DATA\MyDB1_data.MDF', size=20MB, maxsize=100MB, filegrowth=2MB)
+log on
+(name='MyDB1_log', filename='D:\DATA\MyDB1_log.IDF', size=1MB, maxsize=50MB, filegrowth=1MB);
+--第二题
+CREATE DATABASE SCDB
+on
+primary
+(name='SCDB_data', filename='D:\DATA\SCDB_data.MDF', size=3MB)
+log on
+(name='SCDB_log', filename='D:\DATA\SCDB_log.IDF', size=3MB);
+--第三题
+CREATE DATABASE ShiYan
+on
+primary
+(name='ShiYan_data', filename='D:\DATA\ShiYan_data.MDF', size=3MB, maxsize=20MB, filegrowth=1MB)
+log on
+(name='ShiYan_log', filename='D:\DATA\ShiYan_log.IDF', size=1MB, maxsize=5MB, filegrowth=1MB);
+--第四题
+use MyDB1
+ALTER DATABASE MyDB1 modify
+file(name=MyDB1_log, maxsize=100MB, size=5MB)
+ALTER DATABASE MyDB1
+add file
+(name='MyDB1FZ', filename='D:\DATA\MyDB1FZ.NDF', size=2MB, maxsize=10MB, filegrowth=1MB);
+ALTER DATABASE MyDB1
+add log file
+(name='MyDB1LOG1', filename='D:\DATA\MyDB1LOG1.LDF', size=1MB, maxsize=5MB, filegrowth=1MB);
+--第五题
+DROP DATABASE MyDB1;

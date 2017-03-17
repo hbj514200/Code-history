@@ -1,0 +1,125 @@
+--第一题
+use MyDB1;
+CREATE TABLE MyTb1(	a int,	b int	);
+CREATE TABLE MyTb2(	m char,	n datetime	);
+--第二题
+use SCDB;
+CREATE TABLE student(
+sno char(9) NOT NULL UNIQUE,
+sname char(20) UNIQUE,
+ssex char(2),
+sage int,
+sdept char(20)
+);
+INSERT INTO student VALUES ('200215121', '李勇', '男', 20, '计算机系');
+INSERT INTO student VALUES ('200215122', '刘晨', '女', 19, '信息系');
+INSERT INTO student VALUES ('200215123', '王敏', '女', 18, '数学系');
+INSERT INTO student VALUES ('200215124', '张立', '男', 19, '信息系');
+CREATE TABLE course(
+cno char(4) PRIMARY KEY,
+cname char(40),
+cpno char(4),
+ccredit smallint,
+constraint cpno_fk foreign key (cpno) references course(cno)
+);
+INSERT INTO course VALUES ('2', '高等数学', NULL,  2); --插入对顺序敏感
+INSERT INTO course VALUES ('6', '数据处理', '2', 2);
+INSERT INTO course VALUES ('4', '操作系统', '6', 3);
+INSERT INTO course VALUES ('7', 'C语言程序设计', '6', 4);
+INSERT INTO course VALUES ('5', '数据结构', '7', 4);
+INSERT INTO course VALUES ('1', '数据库',   '5', 4);
+INSERT INTO course VALUES ('3', '信息系统', '1', 4); 
+CREATE TABLE sc(
+sno char(9),
+cno char(4),
+grade int,
+constraint sno_fk foreign key (sno) references student(sno),
+constraint cno_fk foreign key (cno) references course(cno)
+);
+INSERT INTO sc VALUES ('200215121', '1', 92);
+INSERT INTO sc VALUES ('200215121', '2', 85);
+INSERT INTO sc VALUES ('200215121', '3', 88);
+INSERT INTO sc VALUES ('200215122', '2', 90);
+INSERT INTO sc VALUES ('200215122', '3', 80);
+--第三题
+use ShiYan;
+CREATE TABLE S(
+SNO char(4) PRIMARY KEY NOT NULL,
+SNAME varchar(20) NOT NULL,
+STATUE smallint,
+CITY varchar(30)
+);
+INSERT INTO S VALUES ('S1', '精益',   20, '天津');
+INSERT INTO S VALUES ('S2', '盛锡',   10, '北京');
+INSERT INTO S VALUES ('S3', '东方红', 30, '北京');
+INSERT INTO S VALUES ('S4', '丰泰盛', 20, '天津');
+INSERT INTO S VALUES ('S5', '为民',   30, '上海');
+CREATE TABLE P(
+PNO char(4) PRIMARY KEY,
+PNAME varchar(20) NOT NULL,
+PCOLOR char(6),
+WEIGHT decimal(4,2) default 0
+);
+INSERT INTO P VALUES ('P1', '螺母',   '红', 12);
+INSERT INTO P VALUES ('P2', '螺栓',   '绿', 17);
+INSERT INTO P VALUES ('P3', '螺丝刀', '蓝', 14);
+INSERT INTO P VALUES ('P4', '螺丝刀', '红', 14);
+INSERT INTO P VALUES ('P5', '凸轮',   '蓝', 40);
+INSERT INTO P VALUES ('P6', '凹轮',   '红', 30);
+CREATE TABLE J(
+JNO char(4) PRIMARY KEY NOT NULL,
+JNAME varchar(20) NOT NULL,
+CITY varchar(30)
+);
+INSERT INTO J VALUES ('J1', '三建',     '北京');
+INSERT INTO J VALUES ('J2', '一汽',     '长春');
+INSERT INTO J VALUES ('J3', '弹簧厂',   '天津');
+INSERT INTO J VALUES ('J4', '造船厂',   '天津');
+INSERT INTO J VALUES ('J5', '机车厂',   '唐山');
+INSERT INTO J VALUES ('J6', '无线电厂', '常州');
+INSERT INTO J VALUES ('J7', '半导体厂', '南京');
+CREATE TABLE SPJ(
+SNO char(4) NOT NULL,
+PNO char(4) NOT NULL,
+JNO char(4) NOT NULL,
+QTY int constraint const_qty check(QTY>=1 and QTY<=10000),
+constraint sno_fk foreign key (SNO) references S(SNO),
+constraint pno_fk foreign key (PNO) references P(PNO),
+constraint jno_fk foreign key (JNO) references J(JNO)
+);
+INSERT INTO SPJ VALUES ('S1', 'P1', 'J1', 200);
+INSERT INTO SPJ VALUES ('S1', 'P1', 'J3', 100);
+INSERT INTO SPJ VALUES ('S1', 'P1', 'J4', 700);
+INSERT INTO SPJ VALUES ('S1', 'P2', 'J2', 100);
+INSERT INTO SPJ VALUES ('S2', 'P3', 'J1', 400);
+INSERT INTO SPJ VALUES ('S2', 'P3', 'J2', 200);
+INSERT INTO SPJ VALUES ('S2', 'P3', 'J4', 500);
+INSERT INTO SPJ VALUES ('S2', 'P3', 'J5', 400);
+INSERT INTO SPJ VALUES ('S3', 'P5', 'J1', 400);
+INSERT INTO SPJ VALUES ('S3', 'P5', 'J2', 100);
+INSERT INTO SPJ VALUES ('S3', 'P1', 'J1', 200);
+INSERT INTO SPJ VALUES ('S3', 'P3', 'J1', 200);
+INSERT INTO SPJ VALUES ('S4', 'P5', 'J1', 100);
+INSERT INTO SPJ VALUES ('S4', 'P6', 'J3', 300);
+INSERT INTO SPJ VALUES ('S4', 'P6', 'J4', 200);
+INSERT INTO SPJ VALUES ('S4', 'P2', 'J4', 100);
+INSERT INTO SPJ VALUES ('S5', 'P3', 'J1', 200);
+INSERT INTO SPJ VALUES ('S5', 'P6', 'J2', 200);
+INSERT INTO SPJ VALUES ('S5', 'P6', 'J4', 500);
+--第六题
+ALTER TABLE S ADD PHONE char(12) default '000000000000';
+ALTER TABLE J ADD constraint NotnullJname check(JNAME NOT NULL);
+ALTER TABLE J DROP constraint NotnullJname;
+ALTER TABLE P ADD constraint UnqPno unique(PNO);
+ALTER TABLE P DROP constraint UnqPno;
+ALTER TABLE SPJ ADD constraint QTYNum check(QTY%100=0);
+--第七题
+CREATE UNIQUE INDEX SnoIndex ON S(Sno);
+CREATE UNIQUE INDEX PnoIndex ON P(Pno DESC);
+CREATE CLUSTERED INDEX JnameIndex ON J(JNAME DESC);
+CREATE nonclustered INDEX SPJIndex ON SPJ(PNO ASC, SNO DESC, JNO DESC);
+--第八题
+DROP INDEX SnoIndex ON S;
+DROP INDEX PnoIndex ON P;
+DROP INDEX JnameIndex ON J;
+DROP INDEX SPJIndex ON SPJ;
