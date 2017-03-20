@@ -1,0 +1,6 @@
+--第二题
+SELECT P.PNO, P.PNAME
+FROM S INNER JOIN (P INNER JOIN (J INNER JOIN SPJ ON J.JNO = SPJ.JNO) ON P.PNO = SPJ.PNO) ON S.SNO = SPJ.SNO
+WHERE (([SPJ].[JNO]='J1') AND ([SPJ].[SNO]='S1'));
+--第三题
+创建--查询设计--查询结果添加SPJ表：SNO,PNO（PNO不打钩显示）--SNO条件为“[请输入零件号：]”，不带“”符号。

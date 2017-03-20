@@ -1,0 +1,222 @@
+--创建数据库
+CREATE DATABASE bookDB;
+--创建图书分类表
+use bookDB;
+CREATE TABLE BookClass
+(
+classNo varchar(3) NOT NULL PRIMARY KEY,
+className varchar(20) NOT NULL
+);
+--创建图书表
+CREATE TABLE Book
+(
+bookNo varchar(10) NOT NULL PRIMARY KEY,
+classNo varchar(3) NOT NULL,	FOREIGN KEY (classNo) REFERENCES BookClass (classNo),
+bookName varchar(40) NOT NULL,
+authorName varchar(8) NOT NULL,
+publishingName varchar(20) NOT NULL,
+publishingNo varchar(17) NOT NULL,
+price decimal(7,2)	NOT NULL,
+publishingDate datetime NOT NULL,
+shopDate datetime NOT NULL,
+shopNum int(3) NOT NULL
+);
+--创建读者表
+CREATE TABLE Reader
+(
+readerNo varchar(8) NOT NULL PRIMARY KEY,
+readerName varchar(8) NOT NULL,
+sex varchar(2) NOT NULL,
+identitycard varchar(18) NOT NULL,
+workUnit varchar(50) NOT NULL
+);
+--创建借阅表
+CREATE TABLE Borrow
+(
+readerNo varchar(8) NOT NULL, 	FOREIGN KEY (readerNo) REFERENCES Reader (readerNo),
+bookNo varchar(3) NOT NULL,	FOREIGN KEY (bookNo) REFERENCES Book (bookNo),
+borrowDate datetime NOT NULL,
+returnDate datetime NOT NULL
+);
+
+--添加分类表测试数据
+INSERT INTO BookClass values('001','计算机');
+INSERT INTO BookClass values('002','文学');
+INSERT INTO BookClass values('003','经济管理');
+INSERT INTO BookClass values('004','社科');
+--添加图书表测试数据
+INSERT INTO Book values('001','001','离散数学','唐明','人民出版社','20060801',18,'2006-08-01','2016-08-03',10);
+INSERT INTO Book values('002','002','挪威的森林','村上春树','清华大学出版社','20060802',44,'2006-08-02','2016-08-04',30);
+INSERT INTO Book values('003','003','创业风头','刘东强','机械工业出版社','20060903',96,'2006-09-03','2016-08-03',5);
+INSERT INTO Book values('004','004','人类的发展','廖坤静','脑残出版社','20040216',25,'2004-02-16','2015-04-02',6);
+INSERT INTO Book values('005','001','数据库原理','王敏琴','图灵出版社','19960811',38,'1996-08-11','2015-04-05',8);
+INSERT INTO Book values('006','002','解忧杂货部','邬老板','文豪出版社','20170102',43,'2017-01-02','2012-02-02',2);
+INSERT INTO Book values('007','003','交易的未来','谢石生','爱钱出版社','20150609',39,'2015-06-09','2012-12-12',3);
+INSERT INTO Book values('020','004','社会主义的未来','特朗普','搞事情出版社','20100905',25.3,'2010-09-05','2010-06-03',4);
+INSERT INTO Book values('030','001','数据库系统概念','王珊','教育出版社','20100305',33.5,'2010-03-05','2017-01-01',9);
+INSERT INTO Book values('040','002','不得不说的秘密','骗子王','文豪出版社','19980328',8.8,'1998-03-28','2008-08-08',1);
+INSERT INTO Book values('050','003','公司经济','王鹤','爱钱出版社','20041124',28.8,'2004-11-24','2013-03-28',3);
+INSERT INTO Book values('060','004','脑残的人民','唐人新','搞事情出版社','20051011',8.1,'2005-10-11','2016-10-10',1);
+INSERT INTO Book values('070','001','java编程思想','Bruce','图灵出版社','20170526',108,'2017-05-26','2012-05-05',20);
+INSERT INTO Book values('080','002','乡愁','张晓风','文豪出版社','19970203',12.1,'1997-02-03','2004-09-26',5);
+INSERT INTO Book values('090','002','我的老公','吴文君','文豪出版社','19940203',12.1,'1994-02-03','2008-09-26',5);
+INSERT INTO Book values('100','002','老公技术','吴文君','文豪出版社','19940203',250.1,'1994-02-03','2008-09-26',5);
+INSERT INTO Book values('101','001','清华计机','假教授','清华大学出版社','20080203',250.1,'2008-02-03','2008-09-26',5);
+--添加读者测试数据
+INSERT INTO Reader values('001','黄兆祥','男','441422199608110034','Google公司');
+INSERT INTO Reader values('005','林思然','女','441422199607110034','中国国旅');
+INSERT INTO Reader values('002','曾珊珊','女','441422199606110034','会计学院');
+INSERT INTO Reader values('003','廖坤静','女','441422199605110034','东莞学院');
+INSERT INTO Reader values('004','黄晓燕','女','441422199604110034','大埔县待业');
+INSERT INTO Reader values('006','马永强','男','251422199107110034','信息管理学院');
+--添加借阅表测试数据
+INSERT INTO borrow values('001','070','2015-08-03','2015-10-03');
+INSERT INTO borrow values('003','040','2016-08-03','2016-10-03');
+INSERT INTO borrow values('003','100','2016-08-03','2016-10-03');
+INSERT INTO borrow values('002','050','2017-08-03','2017-10-03');
+INSERT INTO borrow values('005','002','2013-08-03','2013-10-03');
+INSERT INTO borrow values('006','001','2002-05-03','2002-7-03');
+INSERT INTO borrow values('006','030','2002-05-03','2002-7-03');
+INSERT INTO borrow values('006','090','2005-05-03','2005-7-03');
+INSERT INTO borrow values('004','030','2007-05-03','2007-7-03');
+
+--3.1
+SELECT readerName,workUnit,identitycard FROM reader WHERE
+	SUBSTRING(identitycard,7,4)='1991';
+--3.2
+SELECT * FROM reader WHERE workUnit = '信息管理学院';
+--3.3
+SELECT * FROM book WHERE bookName LIKE '%数据库%';
+--3.4
+SELECT bookNo,shopNum FROM book WHERE authorName='吴文君' AND price>=40;
+--3.5
+SELECT book.bookNo,publishingDate,shopDate,bookName FROM book WHERE
+	year(shopDate) BETWEEN 2005 AND 2008
+	ORDER BY shopDate;
+--3.6
+SELECT readerName,borrowDate,returnDate FROM reader,book,borrow WHERE
+	reader.readerNo=borrow.readerNo AND book.bookNo=borrow.bookNo AND
+	book.bookNo BETWEEN '001' AND '029';
+--3.7
+SELECT book.bookNo,bookName,borrowDate,returnDate FROM reader,borrow,book WHERE
+	reader.readerNo=borrow.readerNo AND borrow.bookNo=book.bookNo AND
+	readerName='马永强';
+--3.8
+SELECT reader.readerNo,readerName,bookName,borrowDate,returnDate FROM reader,book,borrow WHERE
+	reader.readerNo=borrow.readerNo AND book.bookNo=borrow.bookNo AND
+	reader.workUnit='会计学院';
+--3.9
+SELECT reader.readerNo,readerName,bookName,borrowDate,returnDate FROM reader,book,borrow WHERE
+	reader.readerNo=borrow.readerNo AND book.bookNo=borrow.bookNo AND
+	publishingName='清华大学出版社';
+--3.10
+SELECT reader.readerNo,readerName,book.bookNo,bookName FROM reader,borrow,book WHERE
+	reader.readerNo=borrow.readerNo AND book.bookNo=borrow.bookNo AND
+	year(borrowDate) BETWEEN 2007 AND 2008;
+--3.11
+SELECT bookClass.classNo,max(price),avg(price) FROM book,BookClass WHERE
+	book.classNo=BookClass.classNo
+	GROUP BY BookClass.classNo
+	ORDER BY max(price);
+--3.12
+SELECT sum(shopNum) FROM BookClass,book WHERE
+	BookClass.classNo=book.classNo AND BookClass.classNo<'009';
+--3.14
+SELECT readerName,workUnit FROM reader WHERE
+	reader.readerNo NOT IN (SELECT borrow.readerNo FROM borrow);
+SELECT readerName,workUnit FROM reader WHERE NOT EXISTS
+	(SELECT x.readerNo FROM borrow,reader x WHERE
+		x.readerNo=borrow.readerNo);
+--3.15
+SELECT reader.readerNo,readerName,borrow.bookNo,borrow.borrowDate FROM reader,borrow WHERE
+reader.readerNo=borrow.readerNo AND
+reader.readerNo IN (SELECT a.readerNo FROM borrow a WHERE a.bookNo BETWEEN '001' AND '029');
+SELECT reader.readerNo,readerName,borrow.bookNo,borrow.borrowDate FROM reader,borrow WHERE
+reader.readerNo=borrow.readerNo AND
+EXISTS (SELECT a.readerNo FROM borrow a WHERE borrow.readerNo=a.readerNo AND a.bookNo BETWEEN '001' AND '029');
+--3.16
+SELECT reader.readerNo,readerName,borrow.bookNo,borrow.borrowDate FROM reader,borrow WHERE
+reader.readerNo=borrow.readerNo AND reader.readerNo NOT IN
+	(SELECT a.readerNo FROM borrow a WHERE a.bookNo LIKE '001%');
+SELECT reader.readerNo,readerName,borrow.bookNo,borrow.borrowDate FROM reader,borrow WHERE
+reader.readerNo=borrow.readerNo AND NOT EXISTS
+	(SELECT a.readerNo FROM borrow a WHERE a.bookNo LIKE '001%' AND reader.readerNo=a.readerNo);
+--3.17
+SELECT reader.readerNo,readerName,workUnit,book.bookNo,bookName,borrowDate FROM reader,borrow,book WHERE
+	reader.readerNo=borrow.readerNo AND book.bookNo=borrow.bookNo 
+	AND reader.readerNo IN (SELECT a.readerNo FROM reader a WHERE year(borrowDate) BETWEEN 2005 AND 2008);
+SELECT reader.readerNo,readerName,workUnit,book.bookNo,bookName,borrowDate FROM reader,borrow,book WHERE
+	reader.readerNo=borrow.readerNo AND book.bookNo=borrow.bookNo 
+	AND EXISTS (SELECT * FROM reader a WHERE year(borrowDate) BETWEEN 2005 AND 2008);
+--3.18
+SELECT reader.readerNo,readerName,borrowDate,bookName FROM reader,book,borrow WHERE
+	reader.readerNo=borrow.readerNo AND book.bookNo=borrow.bookNo AND
+	reader.readerNo IN (SELECT reader.readerNo FROM reader,book,borrow
+				WHERE reader.readerNo=borrow.readerNo AND book.bookNo=borrow.bookNo
+				AND bookName='离散数学')
+	AND reader.readerNo IN (SELECT reader.readerNo FROM reader,book,borrow
+				WHERE reader.readerNo=borrow.readerNo AND book.bookNo=borrow.bookNo
+				AND bookName='数据库系统概念');
+--3.19
+SELECT distinct reader.readerNo,readerName,SUBSTRING(identitycard,7,4) FROM reader,borrow,book WHERE
+reader.readerNo=borrow.readerNo AND borrow.bookNo=book.bookNo AND
+book.bookNo NOT IN (SELECT a.bookNo FROM borrow a,book b, bookClass c WHERE
+				a.bookNo=b.bookNo AND b.classNo=c.classNo AND c.className='经济管理');
+--备注一下：貌似EXISTS中的子查询要和外查询绑定
+SELECT distinct reader.readerNo,readerName,SUBSTRING(identitycard,7,4) FROM reader,borrow,book WHERE
+reader.readerNo=borrow.readerNo AND borrow.bookNo=book.bookNo AND
+NOT EXISTS (SELECT a.bookNo FROM borrow a,book b, bookClass c WHERE
+				a.bookNo=b.bookNo AND b.classNo=c.classNo AND c.className='经济管理' AND a.readerNo=reader.readerNo);
+--3.20
+SELECT reader.readerNo,readerName,workUnit FROM reader,borrow,book WHERE
+	reader.readerNo=borrow.readerNo AND book.bookNo=borrow.bookNo
+	AND readerName!='马永强'
+	AND book.bookNo IN (SELECT book.bookNo FROM reader,borrow,book WHERE
+					reader.readerNo=borrow.readerNo AND book.bookNo=borrow.bookNo
+					AND readerName='马永强'
+					);
+--3.21
+SELECT x.readerNo,x.readerName,z.bookName,y.borrowDate FROM reader x,borrow y,book z WHERE
+x.readerNo=y.readerNo and y.bookNo=z.bookNo AND x.readerNo!='002' AND
+NOT EXISTS (SELECT * FROM borrow b WHERE readerNo='002' AND NOT EXISTS
+	(SELECT * FROM Borrow c WHERE c.readerNo=x.readerNo AND c.bookNo=b.bookNo)
+);
+--3.22
+SELECT reader.readerNo,readerName,bookName,borrowDate FROM reader,book,borrow,BookClass WHERE
+	reader.readerNo=borrow.readerNo AND book.bookNo=borrow.bookNo AND book.classNo=BookClass.classNo
+	AND book.classNo='002';
+--3.23
+SELECT reader.readerNo,readerName,book.bookNo,bookName FROM reader,borrow,book WHERE
+reader.readerNo=borrow.readerNo AND borrow.bookNo=book.bookNo AND EXISTS
+	(SELECT * FROM borrow a WHERE reader.readerNo=a.readerNo GROUP BY a.readerNo
+		HAVING count(*)>=3);
+--3.24
+SELECT x.readerNo,x.readerName,SUBSTRING(identitycard,7,8) FROM reader x,borrow y,book z
+WHERE x.readerNo=y.readerNo AND y.bookNo=z.bookNo
+GROUP BY x.readerNo HAVING sum(z.price)= (SELECT s FROM
+		(SELECT sum(c.price) s FROM reader a,borrow b,book c
+		WHERE a.readerNo=b.readerNo and b.bookNo=c.bookNo
+		GROUP BY a.readerNo
+		ORDER BY sum(c.price)) t
+		ORDER BY s DESC limit 1);
+--3.25
+UPDATE book,bookClass SET price=price*1.1 WHERE book.classNo=bookClass.classNo AND bookClass.className='经济管理';
+--3.26
+UPDATE borrow SET returnDate=now() WHERE borrow.readerNo IN (SELECT reader.readerNo FROM reader WHERE
+	year(now())-SUBSTRING(identitycard,7,4) BETWEEN 25 AND 35);
+--3.27
+CREATE VIEW erqi AS
+(SELECT reader.readerNo,readerName,sum(book.price) FROM Reader,borrow,book WHERE 
+reader.readerNo=borrow.readerNo and borrow.bookNo=book.bookNo
+GROUP BY reader.readerNo HAVING sum(book.price)>=150);
+--3.28
+CREATE VIEW erwu AS
+SELECT reader.readerNo,readerName,year(now())-SUBSTRING(identitycard,7,4),workUnit,Book.bookNo,borrowDate FROM Reader,borrow,book WHERE
+reader.readerNo=borrow.readerNo and borrow.bookNo=book.bookNo AND
+year(now())-SUBSTRING(identitycard,7,4) BETWEEN 25 and 35;
+--3.29
+CREATE VIEW qinda AS 
+SELECT book.* FROM book,bookClass WHERE publishingName='清华大学出版社' AND year(publishingDate) BETWEEN 2008 and 2009
+AND book.classNo=bookClass.classNo AND className='计算机';
+--3.31
+UPDATE book SET price=price*0.95 WHERE shopNum=(SELECT max(b.shopNum) FROM book b);
