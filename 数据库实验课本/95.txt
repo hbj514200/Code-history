@@ -1,0 +1,17 @@
+--第一题
+CONSTRAINT p_fk FOREIGN KEY (PNO) REFERENCES P(PNO); --创建表时用
+--第二题
+ALTER TABLE SPJ ADD CONSTRAINT chk_qty CHECK (QTY>=0 AND QTY<=1000);
+--第三题
+ALTER TABLE S ADD CONSTRAINT S_STATUS CHECK (STATUS>=0 AND STATUS<=100);
+--第四题
+ALTER TABLE S ADD constraint DF_S default('S1') for SNO;
+--第五题
+ALTER TABLE S ADD constraint STATUS_DEFAULT default(0) for STATUS;
+--第六题
+ALTER TABLE S drop constraint STATUS_DEFAULT;
+--第七题
+--滚
+
+
+--说明一下，规则在SQL server2008中被弃用
