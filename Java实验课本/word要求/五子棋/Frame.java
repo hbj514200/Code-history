@@ -55,7 +55,7 @@ public class Frame extends JFrame implements ActionListener {
             case "人机对战，快冲啊" :
                 if(!iFristButton.isSelected()){
                     ChessBoard.userColor = ChessBoard.BAI;
-                    ChessBoard.control.work();
+                    mChessBoard.addQiZi(10, 11, ChessBoard.HEI);
                 }
                 mChessBoard.working = true;
                 againButton.setEnabled(true);

@@ -80,7 +80,7 @@ public class ChessBoard extends JPanel implements MouseListener {
         if(!working || pan[minX][ROWS-minY]!=0)  return;
         addQiZi(minX, ROWS-minY, userColor);
         checkWin(minX, ROWS-minY);
-        control.work();
+        control.work(minX,ROWS-minY, pan);
         Frame.jiBuLable.setText("目前双方已下 " + (++Frame.bushu) + " 步");
     }
     @Override public void mousePressed(MouseEvent mouseEvent) {}
@@ -94,28 +94,28 @@ public class ChessBoard extends JPanel implements MouseListener {
         int[][] z = this.pan;
         try {
             int count = 1;                                //横向检查
-            while(z[x][y++]==z[oldX][oldY])   count++;
+            while(z[x][y++]==z[oldX][oldY])   if(x<1||x>19||y<1||y>19)  continue;   else    count++;
             x = oldX;   y = oldY;
-            while(z[x][y--]==z[oldX][oldY])   count++;
-            if(count>=7)    leixin = z[oldX][oldY];
+            while(z[x][y--]==z[oldX][oldY])   if(x<1||x>19||y<1||y>19)  continue;   else    count++;
+            if(count>=7)  {  leixin = z[oldX][oldY];    System.out.println("1");}
 
             count = 1;  x = oldX;   y = oldY;             //纵向检查
-            while(z[x++][y]==z[oldX][oldY])   count++;
+            while(z[x--][y]==z[oldX][oldY])   if(x<1||x>19||y<1||y>19)  continue;   else    count++;
             x = oldX;   y = oldY;
-            while(z[x++][y]==z[oldX][oldY])   count++;
-            if(count>=7)    leixin = z[oldX][oldY];
+            while(z[x++][y]==z[oldX][oldY])   if(x<1||x>19||y<1||y>19)  continue;   else    count++;
+            if(count>=7)  {  leixin = z[oldX][oldY];    System.out.println("2");}
 
             count = 1;  x = oldX;   y = oldY;             //左上右下
-            while(z[x++][y++]==z[oldX][oldY])   count++;
+            while(z[x++][y++]==z[oldX][oldY])   if(x<1||x>19||y<1||y>19)  continue;   else    count++;
             x = oldX;   y = oldY;
-            while(z[x--][y--]==z[oldX][oldY])   count++;
-            if(count>=7)    leixin = z[oldX][oldY];
+            while(z[x--][y--]==z[oldX][oldY])   if(x<1||x>19||y<1||y>19)  continue;   else    count++;
+            if(count>=7)  {  leixin = z[oldX][oldY];    System.out.println("3");}
 
             count = 1;  x = oldX;   y = oldY;             //左下右上
-            while(z[x++][y--]==z[oldX][oldY])   count++;
+            while(z[x++][y--]==z[oldX][oldY])   if(x<1||x>19||y<1||y>19)  continue;   else    count++;
             x = oldX;   y = oldY;
-            while(z[x--][y++]==z[oldX][oldY])   count++;
-            if(count>=7)    leixin = z[oldX][oldY];
+            while(z[x--][y++]==z[oldX][oldY])   if(x<1||x>19||y<1||y>19)  continue;   else    count++;
+            if(count>=7)  {  leixin = z[oldX][oldY];    System.out.println("4");}
         } catch (ArrayIndexOutOfBoundsException ignored){ }
         if(leixin!=0){
             JOptionPane.showMessageDialog(null, (leixin==BAI)?"白棋胜利！":"黑棋胜利！");
