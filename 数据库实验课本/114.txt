@@ -1,0 +1,36 @@
+--第一题
+CREATE PROCEDURE baogao AS
+BEGIN
+	raiserror('产品供需情况报告',16,1);
+	SELECT * FROM SPJ;
+END
+--第二题
+CREATE PROCEDURE pro2 @mypno char(4)
+AS
+BEGIN
+	SELECT PNAME,PCOLOR,WEIGHT FROM P WHERE PNO=@mypno;
+END
+--第三题
+CREATE PROCEDURE prcAddp
+AS
+BEGIN
+	INSERT INTO P VALUES ('P4', '螺丝刀', '黑', 14);
+END
+--第四题
+DROP PROCEDURE prcAddp;
+--第五题
+CREATE PROCEDURE prcRETURN @mysno char(4)
+AS
+BEGIN
+	return SELECT CITY FROM S WHERE SNO=@mysno;
+END
+--第六题
+CREATE PROCEDURE prc3
+AS
+BEGIN
+	EXEC prcAddp;
+END
+--第七题
+CREATE PROCEDURE prcAddNewP @Pno char(4), @Pname varchar(20), @Color char(6), @WEIGHT real
+AS
+INSERT P VALUES(@Pno, @Pname, @Color, @WEIGHT);

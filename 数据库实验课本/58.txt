@@ -1,0 +1,24 @@
+﻿--第一题1
+SELECT JNO,PNAME,WEIGHT*0.86 as 零件净重 FROME P,SPJ WHERE
+P.PNO=SPJ.PNO;
+--第一题2
+考虑到比较蛋疼的地方是双表连接的性能耗费，但是连接条件在P表是主键索引，扫描情况
+基本上是遍历SPJ表，因为连接P表时有索引定位。如果条件可以，在SPJ的PNO建个索引倒也
+不错。
+--第一题3
+只有一个最基本的连接操作，没有代码优化重写空间。
+--第一题4
+实机操作, 貌似主要时间都耗费在了聚集索引查找这个东西上。
+--第一题5
+实机操作。
+--第二题
+SELECT J.JNO FROM J,S,SPJ,P WHERE
+J.JNO=SPJ.JNO and P.PNO=SPJ.PNO and S.SNO=SPJ.SNO
+AND J.JNO NOT IN (SELECT distinct a.JNO FROM SPJ a,P b WHERE a.PNO=b.PNO AND b.PCOLOR!='红')
+AND J.JNO NOT IN (SELECT distinct c.JNO FROM SPJ c,S d WHERE c.SNO=d.SNO AND d.CITY='天津');
+--第二题1
+第三行：a的表扫描16%，b的聚集索引扫描16%。
+第四行：c的表扫描13%，d的聚集索引扫描24%。
+--第二题2
+考虑在SPJ表上面对JNO和PNO都建立一个索引，貌似大量的表扫描被聚集索引扫描代替。
+--想不出优化办法, 很多时候能够按要求写出查询表达式就已经很不错了。

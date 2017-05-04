@@ -1,0 +1,41 @@
+﻿--第一题
+CREATE TRIGGER s_insert ON S FOR insert
+AS IF
+(SELECT inserted.status FROM inserted,S WHERE inserted.SNO=S.SNO) NOT LIKE '[12345]%'
+rollback transaction;
+--第二题
+CREATE TRIGGER p_weight ON P FOR update
+AS 
+BEGIN
+IF (SELECT inserted.weight FROM inserted,P WHERE inserted.PNO=P.PNO) >1000
+rollback transaction;
+IF (SELECT inserted.weight FROM inserted,P WHERE inserted.PNO=P.PNO) >1000
+raiserror('你别想插入它，不合规范！',16,1);
+ELSE
+raiserror('插入成功，符合的规范！',16,1);
+END;
+--第三题
+CREATE TRIGGER j_delete ON J FOR delete
+AS 
+BEGIN
+IF (SELECT QTY FROM deleted,SPJ WHERE deleted.JNO=SPJ.JNO) >=50
+	begin
+	raiserror('不满足删除条件！',16,1);
+	rollback transaction;
+	end
+ELSE
+raiserror('相应工程项目信息已经成功删除！',16,1);
+END;
+--第四题
+CREATE TRIGGER s_insert ON S FOR update
+AS IF
+(SELECT count(*) FROM inserted,S WHERE inserted.SNO=S.SNO AND inserted.status=S.status) =0
+rollback transaction;
+--第五题
+exec sp_rename 's_insert', 's_status_update';
+--第六题
+exec sp_helptext 'j_delete';
+--第七题
+exec sp_help 'p_weight';
+--第八题 
+drop TRIGGER s_status_update;

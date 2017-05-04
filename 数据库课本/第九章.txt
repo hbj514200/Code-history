@@ -1,0 +1,132 @@
+--必要的测试代码
+CREATE TABLE Class (
+classNo 	char(6) 					NOT NULL,
+className	varchar(30)		unique		NOT NULL,
+institute	varchar(30)		default 0	NOT NULL,	
+grade		smallint					NOT NULL,
+classNum 	tinyint						NULL,
+constraint ClassPK PRIMARY KEY(classNo)
+);
+CREATE TABLE Student (
+studentNo char(7) NOT NULL,
+studentName varchar(20) NOT NULL,
+sex char(2),
+birthday datetime,
+native varchar(20),
+nation varchar(30),
+classNo char(6),
+constraint StudentPK PRIMARY KEY(StudentNo),
+constraint StudentFK FOREIGN KEY(classNo) REFERENCES Class(classNo) 
+);
+CREATE TABLE Sorce (
+studentNo char(7)	NOT NULL,
+courseNo char(3)	NOT NULL,
+socre numeric(5,1) default 0 NOT NULL,
+PRIMARY KEY(StudentNo,courseNo)
+);
+CREATE TABLE Course (
+courseNo char(7)	PRIMARY KEY,
+courseName varchar(20)	NOT NULL,
+xianxiu char(7) FOREIGN KEY REFERENCES Course(courseNo) NULL
+);
+INSERT INTO Course values ('001', 'C语言', NULL);
+INSERT INTO Course values ('002', 'Java语言', NULL);
+INSERT INTO Class values ('01', '一班', '软件学院', 1, NULL);
+INSERT INTO Class values ('02', '二班', '软件学院', 1, NULL);
+INSERT INTO Student(studentNo,studentName,classNo) values ('001', '李建军', '01');
+INSERT INTO Student(studentNo,studentName,classNo) values ('002', '李建军', '01');
+INSERT INTO Student(studentNo,studentName,classNo) values ('003', '李建军', '01');
+INSERT INTO Student(studentNo,studentName,classNo) values ('004', '李建军', '01');
+INSERT INTO Student(studentNo,studentName,classNo) values ('005', '李建军', '01');
+INSERT INTO Student(studentNo,studentName,classNo) values ('006', '李建军', '02');
+INSERT INTO Student(studentNo,studentName,classNo) values ('007', '李建军', '02');
+INSERT INTO Student(studentNo,studentName,classNo) values ('008', '李建军', '02');
+INSERT INTO Student(studentNo,studentName,classNo) values ('009', '李建军', '02');
+INSERT INTO Sorce values ('001', '001', 35);
+INSERT INTO Sorce values ('001', '002', 40);
+INSERT INTO Sorce values ('002', '001', 60);
+
+--第一题
+　　列级约束针对摸一个属性的约束没有名字，元组约束是建立在表上的约束，有名字的。
+--第二题
+　　方便后期的管理，例如删除修改等。也使得每个约束有了唯一的标识符。
+--第三题
+　　太麻烦了，略
+--第四题
+　　当在表上进行操作时，系统寻找该表上所有符合该操作的约束条件并执行检查目前操作的结果是否符合要求，一旦发现不符合就会立即拒绝执行该命令，若在事务操作中会伴随着回滚操作。
+--第五题
+　　不同数据库的顺序可能不同，一般是约束创建的时间顺序或者名称顺序。当其中某个约束被违反时立即拒绝执行当前数据库操作，若在事务操作中会伴随着回滚操作。
+--9.6.1
+ALTER TABLE Class
+add constraint CK_classNum check (classNum between 0 and 50);
+--9.6.2
+ALTER TABLE Student
+add constraint CK_cao check (native!='上海' OR native!='北京' OR sAge>17);
+--9.6.3
+ALTER TABLE Course
+add constraint Course_xianxiu check (xianxiu IN (SELECT courseNo FROM Course) );
+--9.6.4
+ALTER TABLE Sorce
+add constraint Sorce_jilian FOREIGN KEY(studentNo) REFERENCES Student(studentNo)
+ON UPDATE CASCADE
+ON DELETE CASCADE;
+--9.6.5
+DECLARE @sum tinyint, @classNo char(6)
+SET @sum = 0
+DECLARE myCur CURSOR FOR
+SELECT classNo FROM Student;
+UPDATE Class SET classNum=0;
+OPEN myCur
+FETCH myCur INTO @classNo
+while(@@FETCH_STATUS=0)
+	BEGIN
+	UPDATE Class SET classNum=classNum+1 WHERE classNo=@classNo
+	FETCH myCur INTO @classNo
+	END
+CLOSE myCur
+DEALLOCATE myCur
+--9.8.1
+CREATE USER user01;
+CREATE USER user02;
+CREATE USER user03;
+CREATE USER user04;
+CREATE USER user05;
+--9.8.2
+GRANT all ON Course TO user01, user05 WITH GRANT OPTION;
+--9.8.3
+GRANT select,update ON Class(className,grade,institute) TO user01, user02;
+--9.8.4
+GRANT select,delete ON Course TO user03;
+--9.8.5
+GRANT all ON Course TO user04 WITH GRANT OPTION;
+--9.8.6
+GRANT select,delete ON Course TO user05 WITH GRANT OPTION;
+--9.8.7
+GRANT select ON Course TO user02;
+--9.8.8
+REVOKE select,delete ON Course FROM user05;
+--9.8.9
+REVOKE all FROM user02;
+--9.8.10
+GRANT create table, create procedure TO user02,user03;
+--9.10.1
+CREATE PROCEDURE pro1 @classNo char(6)
+AS
+BEGIN
+SELECT studentName,courseName,socre FROM Student,Course,Sorce WHERE
+Student.studentNo=Sorce.studentNo and Sorce.courseNo=Course.courseNo AND
+classNo=@classNo
+ORDER BY studentName;
+END
+--9.10.2
+CREATE PROCEDURE pro2 @courseNo char(7),
+@renshu int OUTPUT, 
+@pinjun int OUTPUT
+AS
+BEGIN
+SELECT @renshu=count(*), @pinjun=avg(socre) FROM Sorce WHERE courseNo=@courseNo;
+END
+--9.10.3
+略
+--9.10.4
+略
