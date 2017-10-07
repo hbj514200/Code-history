@@ -1,0 +1,128 @@
+<!-- Footer Area Start -->
+<!-- ====Font Awesome Stylesheet==== -->
+<link href="html/css/font-awesome.min.css" rel="stylesheet">
+<!-- ====jQuery UI Stylesheet==== -->
+<link href="html/css/jquery-ui-custom.min.css" rel="stylesheet">
+<!-- ====Bootstrap Stylesheet==== -->
+<link href="html/css/bootstrap.min.css" rel="stylesheet">
+<!-- ====Animate Stylesheet==== -->
+<link href="html/css/animate.min.css" rel="stylesheet">
+<!-- ====Owl Carousel Stylesheet==== -->
+<link href="html/css/owl.carousel.css" rel="stylesheet">
+<!-- ====Main Stylesheet==== -->
+<link href="html/style.css" rel="stylesheet">
+<!-- ====Responsive Stylesheet==== -->
+<link href="html/css/responsive-style.css" rel="stylesheet">
+<!-- ====Color Scheme Stylesheet==== -->
+<link href="html/css/colors/theme-color-1.css" rel="stylesheet" id="changeColorScheme">
+<script src="html/js/jquery-3.1.0.min.js"></script>
+<!-- ====jQuery UI Library==== -->
+<script src="html/js/jquery-ui-custom.min.js"></script>
+<!-- ====Bootstrap Library==== -->
+<script src="html/js/bootstrap.min.js"></script>
+<!-- ====jQuery Validation Plugin==== -->
+<script src="html/js/jquery.validate.min.js"></script>
+<!-- ====Owl Carousel Plugin==== -->
+<script src="html/js/owl.carousel.min.js"></script>
+<!-- ====jQuery Waypoints Plugin==== -->
+<script src="html/js/jquery.waypoints.min.js"></script>
+<!-- ====jQuery Counter Plugin==== -->
+<script src="html/js/jquery.counterup.min.js"></script>
+<!-- ====jQuery UI Touch Punch Plugin==== -->
+<script src="html/js/jquery.ui.touch-punch.min.js"></script>
+<!-- ====RetinaJS Plugin==== -->
+<script src="html/js/retina.min.js"></script>
+<!-- ====Main Script==== -->
+<script src="html/js/main.js"></script>
+<div id="footer" style="width: 100%; padding-top: 25px">
+    <div class="contact-info" style="margin-bottom: -15px">
+        <div class="container">
+            <div class="row" style="margin-top:-20px; margin-bottom: -20px">
+                <!-- Contact Info Item Start -->
+                <div class="col-md-3 col-xs-6" >
+                    <i class="fa fa-headphones"></i>
+                    <a href="#">极速稳定，高效运行</a>
+                </div>
+                <!-- Contact Info Item End -->
+                <!-- Contact Info Item Start -->
+                <div class="col-md-3 col-xs-6">
+                    <i class="fa fa-envelope-o"></i>
+                    <a href="#">1336892373@qq.com</a>
+                </div>
+                <!-- Contact Info Item End -->
+                <!-- Contact Info Item Start -->
+                <div class="col-md-3 col-xs-6">
+                    <i class="fa fa-comments-o"></i>
+                    <a href="help/index.html">获取使用帮助</a>
+                </div>
+                <!-- Contact Info Item End -->
+                <!-- Contact Info Item Start -->
+                <div class="col-md-3 col-xs-6">
+                    <i class="fa fa-phone"></i>
+                    <a href="#">+13800 138000</a>
+                </div>
+                <!-- Contact Info Item End -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer Area End -->
+
+<!-- Copyright Area Start -->
+<div id="copyright">
+    <div class="container">
+        <!-- Copyright Text Start -->
+        <p class="left">Copyright &copy; 2017.小祥未来科技公司.</p>
+        <!-- Copyright Text End -->
+        <p class="right">We Accept: <img src="html/img/payment-methods.png" alt=""></p>
+    </div>
+</div>
+<!-- Copyright Area End -->
+
+<!-- Back To Top Button Start -->
+<div id="backToTop">
+    <a href="#top"><i class="fa fa-angle-up"></i></a>
+</div>
+<!-- Back To Top Button Start -->
+
+
+</body>
+</html>
+
+<script>
+    var nowShow = 0;
+
+    function kuaijie() {   //处理快捷键对导航栏的操作
+        var key = window.event.keyCode;
+        if ( (key-48<1 || key-48>6) && (key!=81&&key!=87&&key!=69&&key!=82) )    nowShow = 0;
+        for (var i=1; i<=6; i++)
+            document.getElementById('xia'+i).style.display='none';
+        if ($(':focus').length!=0)      return;
+        if (key==49)  {  document.getElementById('xia1').style.display='block';   nowShow = 1;  }
+        if (key==50)  {  document.getElementById('xia2').style.display='block';   nowShow = 2;  }
+        if (key==51)  {  document.getElementById('xia3').style.display='block';   nowShow = 3;  }
+        if (key==52)  {  document.getElementById('xia4').style.display='block';   nowShow = 4;  }
+        if (key==53)  {  document.getElementById('xia5').style.display='block';   nowShow = 5;  }
+        if (key==54)  {  document.getElementById('xia6').style.display='block';   nowShow = 6;  }
+
+        if (key==81 && nowShow!=0)    document.getElementById(nowShow+'z'+'q').click();
+        if (key==87 && nowShow!=0)    document.getElementById(nowShow+'z'+'w').click();
+        if (key==69 && nowShow!=0)    document.getElementById(nowShow+'z'+'e').click();
+        if (key==82 && nowShow!=0)    document.getElementById(nowShow+'z'+'r').click();
+    }
+    window.onkeydown = kuaijie;
+
+    //用JS设置导航栏移入移出 二级菜单的显示与隐藏
+    document.getElementsByClassName('dropdown')[0].onmouseover = function(){document.getElementById('xia1').style.display='block';  nowShow=1;}
+    document.getElementsByClassName('dropdown')[1].onmouseover = function(){document.getElementById('xia2').style.display='block';  nowShow=2;}
+    document.getElementsByClassName('dropdown')[2].onmouseover = function(){document.getElementById('xia3').style.display='block';  nowShow=3;}
+    document.getElementsByClassName('dropdown')[3].onmouseover = function(){document.getElementById('xia4').style.display='block';  nowShow=4;}
+    document.getElementsByClassName('dropdown')[4].onmouseover = function(){document.getElementById('xia5').style.display='block';  nowShow=5;}
+    document.getElementsByClassName('dropdown')[5].onmouseover = function(){document.getElementById('xia6').style.display='block';  nowShow=6;}
+    document.getElementsByClassName('dropdown')[0].onmouseout  = function(){document.getElementById('xia1').style.display='none';   nowShow=0;}
+    document.getElementsByClassName('dropdown')[1].onmouseout  = function(){document.getElementById('xia2').style.display='none';   nowShow=0;}
+    document.getElementsByClassName('dropdown')[2].onmouseout  = function(){document.getElementById('xia3').style.display='none';   nowShow=0;}
+    document.getElementsByClassName('dropdown')[3].onmouseout  = function(){document.getElementById('xia4').style.display='none';   nowShow=0;}
+    document.getElementsByClassName('dropdown')[4].onmouseout  = function(){document.getElementById('xia5').style.display='none';   nowShow=0;}
+    document.getElementsByClassName('dropdown')[5].onmouseout  = function(){document.getElementById('xia6').style.display='none';   nowShow=0;}
+</script>

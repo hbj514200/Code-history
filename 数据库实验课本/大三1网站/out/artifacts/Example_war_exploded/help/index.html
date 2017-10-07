@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home</title>
+	<!--fonts-->
+	<!--//fonts-->
+		<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+		<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<!-- for-mobile-apps -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="keywords" content="Kong Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+		Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<!-- //for-mobile-apps -->
+	<!-- js -->
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+	<!-- js -->
+	<!-- start-smooth-scrolling -->
+		<script type="text/javascript" src="js/move-top.js"></script>
+		<script type="text/javascript" src="js/easing.js"></script>
+		<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event){
+					event.preventDefault();
+					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+				});
+			});
+		</script>
+	<!-- start-smooth-scrolling -->
+
+</head>
+<body>
+<!-- banner -->
+<div class="banner" id="home">
+	<div class="container">
+		<div class="top-header row">
+			<script src="js/classie.js"></script>
+			<!--top-nav---->
+			<div class="logo">
+				<a href="index.html"><img src="images/logo.png" alt=""/></a>
+			</div>
+			<div class="top-nav">
+
+				<div class="box" id="box">
+					<div class="box_content">
+
+					</div>
+				</div>
+			</div>
+			<!---start-click-drop-down-menu----->
+			        <!----start-dropdown--->
+			         <script type="text/javascript">
+						var $ = jQuery.noConflict();
+							$(function() {
+								$('#activator').click(function(){
+									$('#box').animate({'top':'0px'},900);
+								});
+								$('#boxclose').click(function(){
+								$('#box').animate({'top':'-1000px'},900);
+								});
+							});
+							$(document).ready(function(){
+							//Hide (Collapse) the toggle containers on load
+							$(".toggle_container").hide();
+							//Switch the "Open" and "Close" state per click then slide up/down (depending on open/close state)
+							$(".trigger").click(function(){
+								$(this).toggleClass("active").next().slideToggle("slow");
+									return false; //Prevent the browser jump to the link anchor
+							});
+
+						});
+					</script>
+			<!---//End-click-drop-down-menu----->
+			<div class="clearfix"> </div>
+		</div>
+		<div class="banner-info">
+			<div class="banner-left">
+				<img src="images/1.png" alt=""/>
+			</div>
+			<div class="banner-right">
+				<h1>&nbsp查看帮助&nbsp</h1>
+				<div class="border"></div>
+				<h2>Professional help</h2>
+				<a href="#about">请向下寻找您的问题</a>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</div>
+
+<!--about-->
+<div class="about text-center" id="about">
+	<div class="container">
+		<h3>数据录入部分</h3>
+		<div class="strip text-center"><img src="images/about.png" alt=" "/></div>
+		<p>1. 该管理系统的数据库中定义了各项数据的类型和限制，所以当输入非法数据时系统将会提示“插入失败，请检查输入”。这时您应当检查按照提示检查自己的输入是否合法，
+		包括但不限于：数字框输入字符错误、数值太过离谱、长度过长、必要字段空输入等等…………<br>2. 数据输入属于编辑数据部分，若您点击录入按钮系统却将您重定向至
+	  主页面，这说明您并没有该表的输入权限，如确有需要应该联系管理员。<br>3. 编辑数据时，本系统会显示该项数据原有的记录值，修改时只要修改目标属性即可提交。若系统提示编辑失败，
+	  请您检查您的编辑操作是否违反数据库规定，例如让学生选了一门不存在的课。</p>
+	</div>
+</div>
+<!--//about-->
+<div class="about-back"></div>
+<!--my skill-->
+<div class="my-skills text-center">
+	<div class="container">
+		<h3>使用流程</h3>
+		<div class="strip text-center"><img src="images/skill.png" alt=" "/></div>
+		<div class="skill-grids">
+					<div class="col-md-2 skills-grid text-center">
+						<div class="circle" id="circles-1"></div>
+						<p>打开网址</p>
+					</div>
+					<div class="col-md-2 skills-grid text-center">
+						<div class="circle" id="circles-2"></div>
+						<p>账户登录</p>
+					</div>
+					<div class="col-md-2 skills-grid text-center">
+						<div class="circle" id="circles-3"></div>
+						<p>选择操作</p>
+					</div>
+					<div class="col-md-2 skills-grid text-center">
+						<div class="circle" id="circles-4"></div>
+						<p>进行工作</p>
+					</div>
+					<div class="col-md-2 skills-grid text-center">
+						<div class="circle" id="circles-5"></div>
+						<p>保存数据</p>
+					</div>
+					<div class="col-md-2 skills-grid text-center">
+						<div class="circle" id="circles-6"></div>
+						<p>注销退出</p>
+					</div>
+					<div class="clearfix"> </div>
+				 <script type="text/javascript" src="js/circles.js"></script>
+					         <script>
+								var colors = [
+										['#6ed4c0', '#ffffff'], ['#6ed4c0', '#ffffff'], ['#6ed4c0', '#ffffff'], ['#6ed4c0', '#ffffff'], ['#6ed4c0', '#ffffff'], ['#6ed4c0', '#ffffff']
+									];
+								for (var i = 1; i <= 7; i++) {
+									var child = document.getElementById('circles-' + i),
+										percentage = 30 + (i * 10)+10;
+
+									Circles.create({
+										id:         child.id,
+										percentage: percentage,
+										radius:     80,
+										width:      10,
+										number:   	percentage / 1,
+										text:       '%',
+										colors:     colors[i - 1]
+									});
+								}
+
+				</script>
+		</div>
+	</div>
+</div>
+<!--//my skill-->
+<div class="my-skill-back"></div>
+<div class="education text-center">
+	<div class="container">
+		<div class="edu-info">
+			<h3>列表浏览部分</h3>
+		</div>
+		<div class="strip text-center"><img src="images/edu.png" alt=" "/></div>
+		<div class="edu-grids">
+			<div class="col-md-4 edu-grid">
+				<p>浏览模块</p><span>查询</span>
+				<img src="images/arrow.png" alt=""/>
+				<div class="edu-border">
+					<div class="edu-grid-master">
+						<h3>用于寻找需要的目标数据</h3>
+						<h4>快速查找检索</h4>
+					</div>
+					<div class="edu-grid-info">
+						<h5>在该模块中，您可以输入查询关键字进行模糊搜索，值得注意的是系统会针对所有属性进行匹配。</h5>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 edu-grid">
+				<p>管理模块</p><span>编辑</span>
+				<img src="images/arrow.png" alt=""/>
+				<div class="edu-border">
+					<div class="edu-grid-master">
+						<h3>用于修改操作当前已有数据</h3>
+						<h4>便捷修改编辑</h4>
+					</div>
+					<div class="edu-grid-info">
+						<h5>在该模块中，您可以针对已有的数据条目进行便捷的修改操作，一切都尽在你的掌控之中。</h5>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 edu-grid">
+				<p>报表模块</p><span>总览</span>
+				<img src="images/arrow.png" alt=""/>
+				<div class="edu-border">
+					<div class="edu-grid-master">
+						<h3>用于对所有数据进行可视化</h3>
+						<h4>归档总结、备份存档</h4>
+					</div>
+					<div class="edu-grid-info">
+						<h5>在该模块中，您可以查看所有数据的报表，供您分析取用。同时它们还贴心地提供下载、打印的高级功能。</h5>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+
+</div>
+<!--//education-->
+<div class="strip-border"><p></p></div>
+<!--work-->
+<div class="work-experience text-center">
+
+	<div class="container">
+		<div class="work-info">
+			<h3>使用备注说明</h3>
+		</div>
+		<div class="strip text-center"><img src="images/work.png" alt=" "/></div>
+		<div class="work-grids">
+			<div class="col-md-4 w-grid">
+				<div class="work-grid">
+					<h3>1</h3>
+					<div class="work-grid-info">
+						<h4>用户权限</h4>
+						<h5>调节多用户有条不紊工作</h5>
+						<p>该管理系统有强大的用户管理功能，系统管理员(拥有全部权限)可以对其它的用户进行管理，当然这并不包括密码。所有的用户密码经过有效的加密才存入数据库，
+						   可以保证足够安全。权限设定可以为每一个用户设置每一个表的每一种操作权限。<br><br></p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 w-grid">
+				<div class="work-grid">
+					<h3>2</h3>
+					<div class="work-grid-info">
+						<h4>数据备份</h4>
+						<h5>规避风险，未雨绸缪</h5>
+						<p>本系统的DBA可以定期将数据库进行备份，同时对于普通的用户如果还需要更加个性化的存档需求。可以向管理员申请查看报表权限，其中提供了导出
+						   excel的功能供您存档。若果您还需要纸质的档案来进行保存，也可以在报表页面点击在线打印。<br><br></p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 w-grid">
+				<div class="work-grid">
+					<h3>3</h3>
+					<div class="work-grid-info">
+						<h4>环境要求</h4>
+						<h5>系统稳定运行的基础</h5>
+						<p>该网站系统可以部署在任意服务器系统上，默认使用tomcat。同时该服务器上安装Mysql数据库供系统使用。对于浏览者用户而言，建议使用chrome、safair等等
+						   浏览器，请勿使用较低版本的IE（例如IE6）。 用户网络链接速度尽量不低于1Mbps<br><br></p>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</div>
+<!--//work-->
+<div class="services-back"></div>
+
+<!--services-->
+<div class="services text-center" id="services">
+	<div class="container">
+		<div class="ser-info">
+			<h3>技术说明</h3>
+		</div>
+		<div class="strip text-center"><img src="images/ser.png" alt=" "/></div>
+		<div class="ser-grids">
+			<div class="col-md-3 ser-grid">
+				<div class="ser-imagea"></div>
+				<h3>Html 5</h3>
+				<p>配合html5、css3给您呈现更加令人愉悦的工作界面，提高您潜在的工作效率。</p>
+			</div>
+			<div class="col-md-3 ser-grid">
+				<div class="ser-imageb"></div>
+				<h3>MySql</h3>
+				<p>当今可靠小巧的免费开源数据库，但提供诸多颇为有用的高级特性。</p>
+			</div>
+			<div class="col-md-3 ser-grid">
+				<div class="ser-imagec"></div>
+				<h3>JavaWeb</h3>
+				<p>网站后台系统基于Java，安全可靠、成熟稳定。同时性能与安全性也满足要求。</p>
+			</div>
+			<div class="col-md-3 ser-grid">
+				<div class="ser-imaged"></div>
+				<h3>我的大脑</h3>
+				<p>一个复杂度超乎想象的巨型神经网络系统，高效且通常可靠。同时还很节能……</p>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</div>
+<!--//services-->
+<!--portfolio-->
+<div class="gallery-section text-center" id="portfolio">
+	<div class="container">
+		<h3>系统截图</h3>
+		<div class="strip text-center"><img src="images/port.png" alt=" "/></div>
+		<p>管理系统使用了先进的动态式交互网页，使得界面清新愉悦。功能设计清晰明了，对于初次使用的用户可以很快上手。精心挑选的网页显示字体，能够为您带来阅读数据的乐趣。
+		   同时，充满青春朝气的配色让人感觉在大自然中一样。</p>
+		<div class="gallery-grids">
+			<div class="top-gallery">
+				<div class="col-md-4 gallery-grid gallery1">
+					<a href="images/p1.jpg" class="swipebox"><img src="images/p1.jpg" class="img-responsive" alt="/">
+						<div class="textbox">
+							<h4>管理系统</h4>
+							<p>小祥</p>
+							<div class="button"><a href="images/p1.jpg" class="swipebox">放大</a></div>
+						</div>
+				</div></a>
+				<div class="col-md-4 gallery-grid gallery1">
+					<a href="images/p2.jpg" class="swipebox"><img src="images/p2.jpg" class="img-responsive" alt="/">
+						<div class="textbox">
+							<h4>Project Name</h4>
+							<p>WEB DESIGN</p>
+							<div class="button"><a href="images/p2.jpg" class="swipebox">VIEW</a></div>
+						</div>
+				</div></a>
+				<div class="col-md-4 gallery-grid gallery1">
+					<a href="images/p3.jpg" class="swipebox"><img src="images/p3.jpg" class="img-responsive" alt="/">
+						<div class="textbox">
+							<h4>Project Name</h4>
+							<p>WEB DESIGN</p>
+							<div class="button"><a href="images/p3.jpg" class="swipebox">VIEW</a></div>
+						</div>
+				</div></a>
+				<div class="col-md-4 gallery-grid gallery1">
+					<a href="images/p4.jpg" class="swipebox"><img src="images/p4.jpg" class="img-responsive" alt="/">
+						<div class="textbox">
+							<h4>Project Name</h4>
+							<p>WEB DESIGN</p>
+							<div class="button"><a href="images/p4.jpg" class="swipebox">VIEW</a></div>
+						</div>
+				</div></a>
+				<div class="col-md-4 gallery-grid gallery1">
+					<a href="images/p5.jpg" class="swipebox"><img src="images/p5.jpg" class="img-responsive" alt="/">
+						<div class="textbox">
+							<h4>Project Name</h4>
+							<p>WEB DESIGN</p>
+							<div class="button"><a href="images/p5.jpg" class="swipebox">VIEW</a></div>
+						</div>
+				</div></a>
+				<div class="col-md-4 gallery-grid gallery1">
+					<a href="images/p6.jpg" class="swipebox"><img src="images/p6.jpg" class="img-responsive" alt="/">
+						<div class="textbox">
+							<h4>Project Name</h4>
+							<p>WEB DESIGN</p>
+							<div class="button"><a href="images/p6.jpg" class="swipebox">VIEW</a></div>
+						</div>
+				</div></a>
+				<div class="clearfix"> </div>
+			</div>
+				<link rel="stylesheet" href="css/swipebox.css">
+				<script src="js/jquery.swipebox.min.js"></script>
+					<script type="text/javascript">
+						jQuery(function($) {
+							$(".swipebox").swipebox();
+						});
+					</script>
+		</div>
+	</div>
+</div>
+<!--//portfolio-->
+
+<div class="process-back"></div>
+<!--testimonials-->
+<div class="testimonials" id="testimonial">
+	<div class="container">
+		<h3>开发者故事</h3>
+		<div class="strip text-center"><img src="images/test.png" alt=" "/></div>
+			<!-- responsiveslides -->
+					<script src="js/responsiveslides.min.js"></script>
+						<script>
+							// You can also use "$(window).load(function() {"
+							$(function () {
+							 // Slideshow 4
+							$("#slider3").responsiveSlides({
+								auto: true,
+								pager: false,
+								nav: true,
+								speed: 500,
+								namespace: "callbacks",
+								before: function () {
+							$('.events').append("<li>before event fired.</li>");
+							},
+							after: function () {
+								$('.events').append("<li>after event fired.</li>");
+								}
+								});
+								});
+						</script>
+			<!-- responsiveslides -->
+			<div  id="top" class="callbacks_container">
+					<ul class="rslides" id="slider3">
+						<li>
+							<div class="test-banner">
+								<img class="quoa" src="images/quo2.png" alt=""/>
+								<div class="test-left">
+									<img src="images/7.png" alt=""/>
+								</div>
+								<div class="test-right">
+									<p>正如你所见的那样，Mr.小祥 对于技术的执着，对于美感的热诚、对于开发效率的关注、还有接近一周的辛勤付出才使得这一款管理系统面世。
+									   虽然可能它还有许多不足的地方，例如可能无法抵御SQL注入攻击…… 但是作为我的第一个小网站，小祥付出了许多，谢谢。Siran</h4>
+								</div>
+								<div class="clearfix"></div>
+								<img class="quo" src="images/quo1.png" alt=""/>
+							</div>
+						</li>
+						<li>
+							<div class="test-banner">
+								<img class="quoa" src="images/quo2.png" alt=""/>
+								<div class="test-left">
+									<img src="images/eee.png" alt=""/>
+								</div>
+								<div class="test-right">
+									<p>Simplicity is not a simple thing. 简单从来就不简单。<br></p>
+									<h4>Si Ran. - Xiao Xiang<br><br><br></h4>
+								</div>
+								<div class="clearfix"></div>
+								<img class="quo" src="images/quo1.png" alt=""/>
+							</div>
+						</li>
+					</ul>
+			</div>
+
+	</div>
+</div>
+<!--testimonials-->
+
+<div class="contact-back" ></div>
+<!--contact-->
+<div class="contact" id="contact">
+	<div class="container">
+		<div class="contact-info text-center">
+			<h3>联系我们</h3>
+			<div class="strip text-center"><img src="images/con1.png" alt=" "/></div>
+		</div>
+		<div class="contact-grids">
+			<div class="col-md-5 contact-left">
+				<h3>向我反馈</h3>
+				<div class="stripb"></div>
+				<ul>
+					<li>广东省, 肇庆市 </li>
+					<li>端州区, 肇庆学院 </li>
+					<li>地下秘密核弹发射基地 741房 </li>
+					<li>13800138000</li>
+					<li><a href="mailto:1336892373@qq.com">1336892373@qq.com</a></li>
+					<li><a href="#">1336892373@qq.com</a></li>
+				</ul>
+			</div>
+			<div class="col-md-7 contact-right">
+				<h3>发送消息</h3>
+				<div class="stripb"></div>
+				<form>
+					<input type="text" value="Name" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Name';}" required="">
+					<input type="text" value="E-mail" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'E-mail';}" required="">
+					<textarea type="text" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Message';}" required="">Message</textarea>
+					<input type="submit" value="发送">
+				</form>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</div>
+<!--//contact-->
+<div class="footer-top"></div>
+
+
+<!--footer-->
+<div class="footer" style="margin-top:30px">
+	<div class="container">
+		<p>Copyright &copy; 2015.xiaoxiang.Company All rights reserved. <herf="1336892373@qq,com">我的主页</a></p>
+	</div>
+</div>
+<!--//footer-->
+<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear'
+				};
+			*/
+
+			$().UItoTop({ easingType: 'easeOutQuart' });
+
+			});
+	</script>
+<!-- //here ends scrolling icon -->
+</body>
+</html>
